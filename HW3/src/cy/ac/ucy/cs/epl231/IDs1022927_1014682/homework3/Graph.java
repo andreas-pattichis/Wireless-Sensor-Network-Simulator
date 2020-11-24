@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 
 public class Graph {
-	
+
 	LinkedList<Node> hashTable;
 	
 	static int hashTableSize;
@@ -22,6 +22,7 @@ public class Graph {
 		int temp = Integer.parseInt(id);
 		
 		return temp%hashTableSize; 
+
 	}
 
 }
