@@ -46,14 +46,15 @@ public class Node {
 		return controlCenter;
 	}
 	
-	
-	
-	
 	public boolean isNeighbour(Node other){
 		
 		int temp = point.calculateDistance(other.point);
 				
 		return (temp > 0 && temp <= maxDistance);
+	}
+	
+	public String getID() {
+		return ID;
 	}
 	
 

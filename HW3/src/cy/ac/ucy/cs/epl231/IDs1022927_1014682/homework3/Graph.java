@@ -6,23 +6,43 @@ import java.util.LinkedList;
 
 public class Graph {
 
-	LinkedList<Node> hashTable;
+	LinkedList<Node> hashTable[];
 	
 	static int hashTableSize;
 	
 	
 	public Graph() {
-		hashTable  = new LinkedList<Node>();
+		hashTable  = new LinkedList[hashTableSize];
+		
+		for(int i = 0; i < hashTableSize; i++) {
+			hashTable[i] = new LinkedList();
+		}
+		
 		hashTableSize = 5;
 		
 	
 	}
 	
-	public int calculateHashkey(String id) {
-		int temp = Integer.parseInt(id);
+	public int calculateHashkey(Node newNode) {
+		int temp = Integer.parseInt(newNode.getID());
 		
 		return temp%hashTableSize; 
 
+	}
+	private void rehashTable() {
+		
+	}
+	public void insertNode(Node newNode){
+		
+		int key = calculateHashkey(newNode);
+		
+		hashTable[key].add(newNode);
+		
+		if(hashTable[key].size() > 20) {
+			rehashTable();
+		}
+		
+		
 	}
 
 }
