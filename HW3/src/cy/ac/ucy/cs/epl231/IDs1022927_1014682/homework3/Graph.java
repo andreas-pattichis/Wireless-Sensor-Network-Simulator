@@ -31,6 +31,24 @@ public class Graph {
 	}
 	private void rehashTable() {
 		
+		LinkedList<Node> temp[] = hashTable;
+		int previousSize = hashTableSize;
+		
+		
+		hashTableSize *= 10;
+		hashTable = new LinkedList[hashTableSize];
+		
+		for(int i = 0; i < hashTableSize; i++) {
+			hashTable[i] = new LinkedList();
+		}
+		
+		for(int i = 0; i < previousSize; i++) {
+			while(!temp[i].isEmpty()) {
+				insertNode(temp[i].remove());
+			}
+		}
+		
+		
 	}
 	public void insertNode(Node newNode){
 		
