@@ -12,13 +12,16 @@ public class Graph {
 	
 	
 	public Graph() {
+		
+		hashTableSize = 5;
+		
 		hashTable  = new LinkedList[hashTableSize];
 		
 		for(int i = 0; i < hashTableSize; i++) {
 			hashTable[i] = new LinkedList();
 		}
 		
-		hashTableSize = 5;
+		
 		
 	
 	}
