@@ -23,10 +23,19 @@ public class Graph {
 	public void findNeighbors(Node n) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
-				if(n.isNeighbour(hashTable[i].get(j))) {
+				if (n.isNeighbour(hashTable[i].get(j))) {
 					n.addNeighbour(hashTable[i].get(j));
 					hashTable[i].get(j).addNeighbour(n);
 				}
+		}
+	}
+
+	public void printHashTable() {
+		for (int i = 0; i < hashTableSize; i++) {
+			System.out.println("hashTable[" + i + "]");
+			for (int j = 0; j < hashTable[i].size(); j++)
+				System.out.println(hashTable[i].get(j).toString());
+			System.out.println();
 		}
 	}
 

@@ -29,13 +29,8 @@ public class Simulation {
 
 			System.out.println(g.hashTableSize);
 
-			for (int i = 0; i < g.hashTableSize; i++) {
-				System.out.println("hashTable[" + i + "]");
-				for (int j = 0; j < g.hashTable[i].size(); j++)
-					System.out.println(g.hashTable[i].get(j).toString());
-				System.out.println();
-			}
-
+			g.printHashTable();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
