@@ -60,6 +60,7 @@ public class Graph {
 		hashTable[key].add(newNode);
 		
 		if(hashTable[key].size() > 20) {
+			System.out.println("table has been rehashed.");
 			rehashTable();
 		}
 		
