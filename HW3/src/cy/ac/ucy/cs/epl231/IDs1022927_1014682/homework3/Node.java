@@ -51,6 +51,10 @@ public class Node {
 
 		return (temp > 0 && temp <= maxDistance);
 	}
+	
+	public void addNeighbour(Node node) {
+		neighbours.add(node);
+	}
 
 	public String getID() {
 		return ID;

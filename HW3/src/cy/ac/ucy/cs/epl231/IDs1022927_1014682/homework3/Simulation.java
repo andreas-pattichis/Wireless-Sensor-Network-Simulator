@@ -2,6 +2,7 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Simulation {
@@ -18,13 +19,16 @@ public class Simulation {
 
 		Graph g = new Graph();
 
+		//LinkedList<Node> allNodes = new LinkedList<Node>();
+		
 		try (Scanner sc = new Scanner(file)) {
 			while (sc.hasNextLine()) {
 				Node test = new Node(sc.nextLine(), d);
 				g.insertNode(test);
+				g.findNeighbors(test);
 				// System.out.println(test.toString());
 			}
-
+			
 			System.out.println(g.hashTableSize);
 
 			for (int i = 0; i < g.hashTableSize; i++) {
@@ -33,6 +37,7 @@ public class Simulation {
 					System.out.println(g.hashTable[i].get(j).toString());
 				System.out.println();
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

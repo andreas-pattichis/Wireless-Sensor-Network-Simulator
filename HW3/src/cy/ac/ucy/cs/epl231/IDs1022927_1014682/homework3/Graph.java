@@ -20,6 +20,16 @@ public class Graph {
 
 	}
 
+	public void findNeighbors(Node n) {
+		for (int i = 0; i < hashTableSize; i++) {
+			for (int j = 0; j < hashTable[i].size(); j++)
+				if(n.isNeighbour(hashTable[i].get(j))) {
+					n.addNeighbour(hashTable[i].get(j));
+					hashTable[i].get(j).addNeighbour(n);
+				}
+		}
+	}
+
 	public int calculateHashkey(Node newNode) {
 		int temp = Integer.parseInt(newNode.getID());
 
