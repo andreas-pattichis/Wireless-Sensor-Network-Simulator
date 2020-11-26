@@ -7,7 +7,7 @@ public class Simulation {
 		if (args.length != 2) {
 			System.out.println("Wrong input.\nYou have to enter the value of d and the name of the text file.");
 			return;
-		} 
+		}  
 		
 		System.out.println("01\t[42, 85]\t30");
 
