@@ -19,8 +19,6 @@ public class Simulation {
 
 		Graph g = new Graph();
 
-		//LinkedList<Node> allNodes = new LinkedList<Node>();
-		
 		try (Scanner sc = new Scanner(file)) {
 			while (sc.hasNextLine()) {
 				Node test = new Node(sc.nextLine(), d);
@@ -28,7 +26,7 @@ public class Simulation {
 				g.findNeighbors(test);
 				// System.out.println(test.toString());
 			}
-			
+
 			System.out.println(g.hashTableSize);
 
 			for (int i = 0; i < g.hashTableSize; i++) {
@@ -37,21 +35,9 @@ public class Simulation {
 					System.out.println(g.hashTable[i].get(j).toString());
 				System.out.println();
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// System.out.println("01\t[42, 85]\t30");
-
-		// Coordinates test1 = new Coordinates("[42, 85]");
-
-		// Coordinates test2 = new Coordinates("[30, 60]");
-
-		// System.out.println(test1.calculateDistance(test2));
-
-		// Node sensor = new Node("01\t[42, 85]\t30", 4);
-
-		// System.out.println(sensor);
 	}
 }
