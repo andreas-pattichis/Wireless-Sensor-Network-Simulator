@@ -38,5 +38,18 @@ public class Node {
 		return e;
 	}
 	
+	public LinkedList<Node> getChildren(){
+		return children;
+		
+	}
+	
+	public String toString() {
+		return e.toString(); 
+	}
+	
+	
+	
+	
+	
 	
 }
