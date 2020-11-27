@@ -6,7 +6,7 @@ public class MST {
 
 	private Node root;
 
-	private int treeSize;
+	private static int treeSize;
 
 	public MST(Node root) {
 
