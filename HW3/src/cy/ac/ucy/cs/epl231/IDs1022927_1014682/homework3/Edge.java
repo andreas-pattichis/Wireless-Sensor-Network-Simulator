@@ -47,7 +47,7 @@ public class Edge {
 
 	public boolean isNeighbour(Edge other) {
 
-		int temp = point.calculateDistance(other.point);
+		float temp = point.calculateDistance(other.point);
 
 		return (temp > 0 && temp <= maxDistance);
 	}
