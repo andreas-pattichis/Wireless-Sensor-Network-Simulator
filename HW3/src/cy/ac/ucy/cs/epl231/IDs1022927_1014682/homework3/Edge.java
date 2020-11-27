@@ -4,15 +4,15 @@ import java.util.LinkedList;
 
 public class Edge {
 
-	String ID;
-	Coordinates point;
-	int temperature;
-	LinkedList<Edge> neighbours;
+	private String ID;
+	private Coordinates point;
+	private int temperature;
+	private LinkedList<Edge> neighbours;
 
-	boolean sensor;
-	boolean controlCenter;
+	private boolean sensor;
+	private boolean controlCenter;
 
-	int maxDistance;
+	private int maxDistance;
 
 	public Edge(String str, int d) {
 		String[] temp = new String[3];
@@ -35,6 +35,9 @@ public class Edge {
 			sensor = true;
 		}
 
+	}
+	public float calculateDistance(Edge other) {
+		return point.calculateDistance(other.point);
 	}
 
 	public boolean isSensor() {

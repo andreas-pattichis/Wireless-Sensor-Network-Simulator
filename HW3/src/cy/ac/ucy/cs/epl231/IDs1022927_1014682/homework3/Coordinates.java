@@ -4,8 +4,8 @@ import java.lang.Math;
 
 public class Coordinates {
 
-	int x;
-	int y;
+	private int x;
+	private int y;
 
 	public Coordinates(String coordinates) {
 

@@ -1,14 +1,19 @@
 package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Graph {
 
-	LinkedList<Edge> hashTable[];
+	private LinkedList<Edge> hashTable[];
 
-	static int hashTableSize;
+	private static int hashTableSize;
+
+	private int noOfEdges;
 
 	public Graph() {
+
+		noOfEdges = 0;
 
 		hashTableSize = 5;
 
@@ -60,22 +65,78 @@ public class Graph {
 
 		for (int i = 0; i < previousSize; i++) {
 			while (!temp[i].isEmpty()) {
-				insertNode(temp[i].remove());
+				insertEdge(temp[i].remove());
 			}
 		}
 
 	}
 
-	public void insertNode(Edge newNode) {
+	public void insertEdge(Edge newNode) {
+
+		noOfEdges++;
 
 		int key = calculateHashkey(newNode);
 
+		findNeighbors(newNode);
 		hashTable[key].add(newNode);
 
 		if (hashTable[key].size() > 20) {
-			System.out.println("table has been rehashed.");
+			System.out.println("Table has been rehashed.");
 			rehashTable();
 		}
+
+	}
+
+	public MST calculateMST(Edge e) {
+
+		Node root = new Node(e);
+
+		MST mst = new MST(root);
+
+		LinkedList<Node> visited = new LinkedList<Node>();
+		visited.add(root);
+
+		while (mst.getTreeSize() != noOfEdges) {
+
+			LinkedList<Edge> totalNeighbours = new LinkedList<Edge>();
+
+			int cnt = 0;
+			
+			Node temp = mst.getRoot();
+
+			while (cnt != mst.getTreeSize()) {
+				
+				
+				
+				totalNeighbours.add
+
+			}
+
+		}
+
+		return mst;
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Graph other = (Graph) obj;
+		if (!Arrays.equals(hashTable, other.hashTable))
+			return false;
+		if (noOfEdges != other.noOfEdges)
+			return false;
+		return true;
+	}
+
+	public int getNoOfEdges() {
+
+		return noOfEdges;
 
 	}
 

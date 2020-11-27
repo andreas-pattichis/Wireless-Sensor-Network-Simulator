@@ -22,11 +22,10 @@ public class Simulation {
 		try (Scanner sc = new Scanner(file)) {
 			while (sc.hasNextLine()) {
 				Edge test = new Edge(sc.nextLine(), d);
-				g.insertNode(test);
+				g.insertEdge(test);
 				g.findNeighbors(test);
 			}
 
-			System.out.println(g.hashTableSize);
 
 			g.printHashTable();
 			
