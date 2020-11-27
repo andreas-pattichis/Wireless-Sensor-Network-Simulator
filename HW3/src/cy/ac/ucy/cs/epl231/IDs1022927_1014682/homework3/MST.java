@@ -44,9 +44,9 @@ public class MST {
 
 			}
 
-			LinkedList<Node> tempQueue = currentLevel;
+			LinkedList<Node> tempList = currentLevel;
 			currentLevel = nextLevel;
-			nextLevel = tempQueue;
+			nextLevel = tempList;
 
 			System.out.println();
 			level++;

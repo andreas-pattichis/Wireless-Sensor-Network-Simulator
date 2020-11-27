@@ -34,6 +34,17 @@ public class Graph {
 				}
 		}
 	}
+	
+	public Edge findEdge(String ID) {
+		for (int i = 0; i < hashTableSize; i++) {
+			for (int j = 0; j < hashTable[i].size(); j++)
+				if (hashTable[i].get(j).getID().compareTo(ID) == 0) {
+					return hashTable[i].get(j);
+				}
+		}
+		
+		return null;
+	}
 
 	public void printHashTable() {
 		for (int i = 0; i < hashTableSize; i++) {
