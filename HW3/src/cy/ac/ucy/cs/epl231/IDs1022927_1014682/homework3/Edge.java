@@ -2,19 +2,19 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.util.LinkedList;
 
-public class Node {
+public class Edge {
 
 	String ID;
 	Coordinates point;
 	int temperature;
-	LinkedList<Node> neighbours;
+	LinkedList<Edge> neighbours;
 
 	boolean sensor;
 	boolean controlCenter;
 
 	int maxDistance;
 
-	public Node(String str, int d) {
+	public Edge(String str, int d) {
 		String[] temp = new String[3];
 
 		temp = str.split("\t");
@@ -23,7 +23,7 @@ public class Node {
 		point = new Coordinates(temp[1]);
 		temperature = Integer.parseInt(temp[2]);
 
-		neighbours = new LinkedList<Node>();
+		neighbours = new LinkedList<Edge>();
 
 		maxDistance = d;
 
@@ -45,14 +45,14 @@ public class Node {
 		return controlCenter;
 	}
 
-	public boolean isNeighbour(Node other) {
+	public boolean isNeighbour(Edge other) {
 
 		int temp = point.calculateDistance(other.point);
 
 		return (temp > 0 && temp <= maxDistance);
 	}
 	
-	public void addNeighbour(Node node) {
+	public void addNeighbour(Edge node) {
 		neighbours.add(node);
 	}
 
