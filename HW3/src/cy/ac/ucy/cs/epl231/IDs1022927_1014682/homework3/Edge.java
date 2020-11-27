@@ -85,7 +85,7 @@ public class Edge {
 			}
 		return e;
 	}
-	
+
 	public Float getClosestDistance() {
 
 		Edge e = getClosestNeighbour();

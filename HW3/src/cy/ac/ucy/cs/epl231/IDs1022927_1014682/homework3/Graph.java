@@ -34,7 +34,7 @@ public class Graph {
 				}
 		}
 	}
-	
+
 	public Edge findEdge(String ID) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
@@ -42,7 +42,7 @@ public class Graph {
 					return hashTable[i].get(j);
 				}
 		}
-		
+
 		return null;
 	}
 
@@ -112,23 +112,22 @@ public class Graph {
 			LinkedList<Edge> closest = new LinkedList<Edge>();
 			LinkedList<Float> distance = new LinkedList<Float>();
 
-
-			for(int i=0;i<visited.size();i++) 
-				if(!visited.contains(visited.get(i).getEdge().getClosestNeighbour())) {
+			for (int i = 0; i < visited.size(); i++)
+				if (!visited.contains(visited.get(i).getEdge().getClosestNeighbour())) {
 					closest.add(visited.get(i).getEdge().getClosestNeighbour());
 					distance.add(visited.get(i).getEdge().getClosestDistance());
 				}
-			
+
 			int idxMinDistance = 0;
 			float minDistance = distance.get(idxMinDistance);
-			
-			for(int i=1;i<distance.size();i++) 
-				if(distance.get(i)<minDistance) {
+
+			for (int i = 1; i < distance.size(); i++)
+				if (distance.get(i) < minDistance) {
 					idxMinDistance = i;
 					minDistance = distance.get(i);
 				}
-			
-			mst.insertNode(visited.get(idxMinDistance), new Node(closest.get(idxMinDistance)));
+
+			mst.insertNodeAsChild(visited.get(idxMinDistance), new Node(closest.get(idxMinDistance)));
 			lastInput = new Node(closest.get(idxMinDistance));
 		}
 

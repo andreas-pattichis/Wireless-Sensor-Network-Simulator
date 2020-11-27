@@ -15,6 +15,7 @@ public class MST {
 
 	}
 
+//2nd funtion
 	public void display() {
 
 		LinkedList<Node> currentLevel = new LinkedList<Node>();
@@ -69,7 +70,7 @@ public class MST {
 		this.treeSize = treeSize;
 	}
 
-	public void insertNode(Node dest, Node newNode) {
+	public void insertNodeAsChild(Node dest, Node newNode) {
 
 		dest.addChild(newNode);
 		treeSize++;
@@ -114,9 +115,8 @@ public class MST {
 
 	}
 
-	public void insertEdge(Edge newEdge) {
-
-		Node newNode = new Node(newEdge);
+	// 3rd function
+	public void insertNode(Node newNode) {
 
 		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
 		LinkedList<Float> distance = new LinkedList<Float>();
@@ -134,9 +134,29 @@ public class MST {
 				minDistance = distance.get(i);
 			}
 		}
-		
-		this.insertNode(listOfNodes.get(idxMinDistance), newNode);
-		
+
+		this.insertNodeAsChild(listOfNodes.get(idxMinDistance), newNode);
+
+	}
+
+	// 4th function
+	public void removeEdge(Edge newEdge) {
+
+		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
+
+		for (int i = 0; i < listOfNodes.size(); i++) {
+
+			if (newEdge.getID().compareTo(listOfNodes.get(i).getEdge().getID()) == 0) {
+
+				Node removedNode = listOfNodes.remove(i);
+
+				for (int j = 0; j < removedNode.getChildren().size(); j++) {
+					insertNode(removedNode.getChildren().get(j));
+				}
+
+			}
+		}
+
 	}
 
 	/**

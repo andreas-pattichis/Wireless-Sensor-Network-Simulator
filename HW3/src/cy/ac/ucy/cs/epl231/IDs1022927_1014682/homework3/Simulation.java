@@ -26,21 +26,19 @@ public class Simulation {
 				g.findNeighbors(test);
 			}
 
-
 			g.printHashTable();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		Edge temp = new Edge("02	[190, 300]	30",200);
-		
-	g.insertEdge(temp);
-	g.findNeighbors(temp);
+
+		Edge temp = new Edge("02	[190, 300]	30", 200);
+
+		g.insertEdge(temp);
+		g.findNeighbors(temp);
 		MST mst = g.calculateMST(temp);
-		
+
 		mst.display();
 	}
-	
-	
+
 }
