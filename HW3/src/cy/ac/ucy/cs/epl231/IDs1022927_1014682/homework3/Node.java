@@ -34,7 +34,9 @@ public class Node {
 	}
 	
 	
-	
+	public Edge getEdge() {
+		return e;
+	}
 	
 	
 }

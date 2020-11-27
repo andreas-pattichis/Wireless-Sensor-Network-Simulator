@@ -89,29 +89,36 @@ public class Graph {
 
 	public MST calculateMST(Edge e) {
 
-		Node root = new Node(e);
+		Node lastInput = new Node(e);
 
-		MST mst = new MST(root);
+		MST mst = new MST(lastInput);
 
 		LinkedList<Node> visited = new LinkedList<Node>();
-		visited.add(root);
+		visited.add(lastInput);
 
 		while (mst.getTreeSize() != noOfEdges) {
 
-			LinkedList<Edge> totalNeighbours = new LinkedList<Edge>();
+			LinkedList<Edge> closest = new LinkedList<Edge>();
+			LinkedList<Float> distance = new LinkedList<Float>();
 
-			int cnt = 0;
+
+			for(int i=0;i<visited.size();i++) 
+				if(!visited.contains(visited.get(i).getEdge().getClosestNeighbour())) {
+					closest.add(visited.get(i).getEdge().getClosestNeighbour());
+					distance.add(visited.get(i).getEdge().getClosestDistance());
+				}
 			
-			Node temp = mst.getRoot();
-
-			while (cnt != mst.getTreeSize()) {
-				
-				
-				
-				totalNeighbours.add
-
-			}
-
+			int idxMinDistance = 0;
+			float minDistance = distance.get(idxMinDistance);
+			
+			for(int i=1;i<distance.size();i++) 
+				if(distance.get(i)<minDistance) {
+					idxMinDistance = i;
+					minDistance = distance.get(i);
+				}
+			
+			mst.insertNode(lastInput, new Node(closest.get(idxMinDistance)));
+			lastInput = new Node(closest.get(idxMinDistance));
 		}
 
 		return mst;

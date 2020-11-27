@@ -36,6 +36,7 @@ public class Edge {
 		}
 
 	}
+
 	public float calculateDistance(Edge other) {
 		return point.calculateDistance(other.point);
 	}
@@ -54,7 +55,7 @@ public class Edge {
 
 		return (temp > 0 && temp <= maxDistance);
 	}
-	
+
 	public void addNeighbour(Edge node) {
 		neighbours.add(node);
 	}
@@ -70,6 +71,25 @@ public class Edge {
 		temp.append(ID + "\t" + point + "\t" + temperature);
 
 		return temp.toString();
+	}
+
+	public Edge getClosestNeighbour() {
+
+		float minDistance = calculateDistance(neighbours.get(0));
+		Edge e = neighbours.get(0);
+
+		for (int i = 1; i < neighbours.size(); i++)
+			if (calculateDistance(neighbours.get(i)) < minDistance) {
+				minDistance = calculateDistance(neighbours.get(i));
+				e = neighbours.get(i);
+			}
+		return e;
+	}
+	
+	public Float getClosestDistance() {
+
+		Edge e = getClosestNeighbour();
+		return calculateDistance(e);
 	}
 
 }
