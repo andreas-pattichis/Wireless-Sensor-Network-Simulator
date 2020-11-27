@@ -32,11 +32,8 @@ public class Simulation {
 			e.printStackTrace();
 		}
 
-		Edge temp = new Edge("02	[190, 300]	30", 200);
-
-		g.insertEdge(temp);
-		g.findNeighbors(temp);
-		MST mst = g.calculateMST(temp);
+		
+		MST mst = g.calculateMST(g.findEdge("02"));
 
 		mst.display();
 	}
