@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Graph {
 
-	LinkedList<Node> hashTable[];
+	LinkedList<Edge> hashTable[];
 
 	static int hashTableSize;
 
@@ -20,7 +20,7 @@ public class Graph {
 
 	}
 
-	public void findNeighbors(Node n) {
+	public void findNeighbors(Edge n) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
 				if (n.isNeighbour(hashTable[i].get(j))) {
@@ -39,7 +39,7 @@ public class Graph {
 		}
 	}
 
-	public int calculateHashkey(Node newNode) {
+	public int calculateHashkey(Edge newNode) {
 		int temp = Integer.parseInt(newNode.getID());
 
 		return temp % hashTableSize;
@@ -48,7 +48,7 @@ public class Graph {
 
 	private void rehashTable() {
 
-		LinkedList<Node> temp[] = hashTable;
+		LinkedList<Edge> temp[] = hashTable;
 		int previousSize = hashTableSize;
 
 		hashTableSize *= 10;
@@ -66,7 +66,7 @@ public class Graph {
 
 	}
 
-	public void insertNode(Node newNode) {
+	public void insertNode(Edge newNode) {
 
 		int key = calculateHashkey(newNode);
 
