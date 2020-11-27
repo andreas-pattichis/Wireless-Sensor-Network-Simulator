@@ -117,7 +117,7 @@ public class Graph {
 					minDistance = distance.get(i);
 				}
 			
-			mst.insertNode(lastInput, new Node(closest.get(idxMinDistance)));
+			mst.insertNode(visited.get(idxMinDistance), new Node(closest.get(idxMinDistance)));
 			lastInput = new Node(closest.get(idxMinDistance));
 		}
 
