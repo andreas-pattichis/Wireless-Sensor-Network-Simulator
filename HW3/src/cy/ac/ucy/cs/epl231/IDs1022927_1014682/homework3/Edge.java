@@ -7,7 +7,9 @@ public class Edge {
 	private String ID;
 	private Coordinates point;
 	private int temperature;
+	
 	private LinkedList<Edge> neighbours;
+	
 
 	private boolean sensor;
 	private boolean controlCenter;

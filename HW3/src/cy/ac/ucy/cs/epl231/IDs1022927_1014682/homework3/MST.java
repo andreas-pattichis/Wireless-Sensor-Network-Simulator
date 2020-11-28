@@ -14,6 +14,22 @@ public class MST {
 		treeSize = 1;
 
 	}
+	
+	public Node getNodeFromMST(Node toBeSearched) {
+		
+		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
+
+		for (int i = 0; i < listOfNodes.size(); i++) {
+
+			if (toBeSearched.getEdge().getID().compareTo(listOfNodes.get(i).getEdge().getID()) == 0) {
+
+				return listOfNodes.get(i);
+
+			}
+		}
+		
+		return null;
+	}
 
 //2nd funtion
 	public void display() {
