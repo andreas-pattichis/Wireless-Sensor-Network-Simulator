@@ -7,7 +7,9 @@ public class Edge {
 	private String ID;
 	private Coordinates point;
 	private int temperature;
+	
 	private LinkedList<Edge> neighbours;
+	
 
 	private boolean sensor;
 	private boolean controlCenter;
@@ -55,6 +57,10 @@ public class Edge {
 
 		return (temp > 0 && temp <= maxDistance);
 	}
+	
+	public boolean isAlreadyANeighbour(Edge other) {
+		return neighbours.contains(other);
+	}
 
 	public void addNeighbour(Edge node) {
 		neighbours.add(node);
@@ -73,17 +79,94 @@ public class Edge {
 		return temp.toString();
 	}
 
+	public void deleteNeighbour(Edge toBeDeleted) {
+		this.neighbours.remove(toBeDeleted);
+
+	}
+
 	public Edge getClosestNeighbour() {
 
-		float minDistance = calculateDistance(neighbours.get(0));
-		Edge e = neighbours.get(0);
+		if (neighbours.size() > 0) {
+			float minDistance = calculateDistance(neighbours.get(0));
+			Edge e = neighbours.get(0);
 
-		for (int i = 1; i < neighbours.size(); i++)
-			if (calculateDistance(neighbours.get(i)) < minDistance) {
-				minDistance = calculateDistance(neighbours.get(i));
-				e = neighbours.get(i);
-			}
-		return e;
+			for (int i = 1; i < neighbours.size(); i++)
+				if (calculateDistance(neighbours.get(i)) < minDistance) {
+					minDistance = calculateDistance(neighbours.get(i));
+					e = neighbours.get(i);
+				}
+			return e;
+		}
+
+		return null;
+	}
+
+	public Edge getClosestNeighbour(LinkedList<Node> visited) {
+
+		if (neighbours.size() > 0) {
+			float minDistance = Float.POSITIVE_INFINITY;
+			Edge e = null;
+
+			for (int i = 0; i < neighbours.size(); i++)
+				if (calculateDistance(neighbours.get(i)) < minDistance
+						&& !visited.contains(new Node(neighbours.get(i)))) {
+
+					minDistance = calculateDistance(neighbours.get(i));
+					e = neighbours.get(i);
+				}
+			return e;
+		}
+
+		return null;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
+		result = prime * result + (controlCenter ? 1231 : 1237);
+		result = prime * result + maxDistance;
+		result = prime * result + ((neighbours == null) ? 0 : neighbours.hashCode());
+		result = prime * result + ((point == null) ? 0 : point.hashCode());
+		result = prime * result + (sensor ? 1231 : 1237);
+		result = prime * result + temperature;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Edge other = (Edge) obj;
+		if (ID == null) {
+			if (other.ID != null)
+				return false;
+		} else if (!ID.equals(other.ID))
+			return false;
+		if (controlCenter != other.controlCenter)
+			return false;
+		if (maxDistance != other.maxDistance)
+			return false;
+		if (neighbours == null) {
+			if (other.neighbours != null)
+				return false;
+		} else if (!neighbours.equals(other.neighbours))
+			return false;
+		if (point == null) {
+			if (other.point != null)
+				return false;
+		} else if (!point.equals(other.point))
+			return false;
+		if (sensor != other.sensor)
+			return false;
+		if (temperature != other.temperature)
+			return false;
+		return true;
 	}
 
 	public Float getClosestDistance() {

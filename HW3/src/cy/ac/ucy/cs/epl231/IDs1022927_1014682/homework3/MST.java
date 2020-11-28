@@ -6,13 +6,29 @@ public class MST {
 
 	private Node root;
 
-	private int treeSize;
+	private static int treeSize;
 
 	public MST(Node root) {
 
 		this.root = root;
 		treeSize = 1;
 
+	}
+	
+	public Node getNodeFromMST(Node toBeSearched) {
+		
+		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
+
+		for (int i = 0; i < listOfNodes.size(); i++) {
+
+			if (toBeSearched.getEdge().getID().compareTo(listOfNodes.get(i).getEdge().getID()) == 0) {
+
+				return listOfNodes.get(i);
+
+			}
+		}
+		
+		return null;
 	}
 
 //2nd funtion
@@ -34,7 +50,7 @@ public class MST {
 				Node temp = null;
 				temp = currentLevel.remove();
 
-				System.out.print(temp);
+				System.out.print(temp + " ");
 
 				LinkedList<Node> children = temp.getChildren();
 
