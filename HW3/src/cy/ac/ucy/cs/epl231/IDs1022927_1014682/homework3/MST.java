@@ -4,38 +4,24 @@ import java.util.LinkedList;
 
 public class MST {
 
-	private Node root;
+	private Edge root;
 
 	private static int treeSize;
 
-	public MST(Node root) {
+	public MST(Edge root) {
 
 		this.root = root;
 		treeSize = 1;
 
 	}
 	
-	public Node getNodeFromMST(Node toBeSearched) {
-		
-		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
-
-		for (int i = 0; i < listOfNodes.size(); i++) {
-
-			if (toBeSearched.getEdge().getID().compareTo(listOfNodes.get(i).getEdge().getID()) == 0) {
-
-				return listOfNodes.get(i);
-
-			}
-		}
-		
-		return null;
-	}
-
+	
+	
 //2nd funtion
 	public void display() {
 
-		LinkedList<Node> currentLevel = new LinkedList<Node>();
-		LinkedList<Node> nextLevel = new LinkedList<Node>();
+		LinkedList<Edge> currentLevel = new LinkedList<Edge>();
+		LinkedList<Edge> nextLevel = new LinkedList<Edge>();
 
 		currentLevel.add(root);
 
@@ -47,21 +33,23 @@ public class MST {
 
 			while (!currentLevel.isEmpty()) {
 
-				Node temp = null;
+				Edge temp = null;
 				temp = currentLevel.remove();
+				
+				
 
-				System.out.print(temp + " ");
+				System.out.print(temp + " , ");
 
-				LinkedList<Node> children = temp.getChildren();
+				LinkedList<Edge> children = temp.getChildren();
 
 				for (int i = 0; i < children.size(); i++) {
-
+					if(children.get(i) != null)
 					nextLevel.add(children.get(i));
 				}
 
 			}
 
-			LinkedList<Node> tempList = currentLevel;
+			LinkedList<Edge> tempList = currentLevel;
 			currentLevel = nextLevel;
 			nextLevel = tempList;
 
@@ -86,20 +74,20 @@ public class MST {
 		this.treeSize = treeSize;
 	}
 
-	public void insertNodeAsChild(Node dest, Node newNode) {
+	public void insertNodeAsChild(Edge dest, Edge newNode) {
 
 		dest.addChild(newNode);
 		treeSize++;
 
 	}
 
-	private LinkedList<Node> getListOfNodesInMST() {
+	private LinkedList<Edge> getListOfNodesInMST() {
 
-		LinkedList<Node> listOfNodes = new LinkedList<Node>();
+		LinkedList<Edge> listOfNodes = new LinkedList<Edge>();
 		listOfNodes.add(root);
 
-		LinkedList<Node> currentLevel = new LinkedList<Node>();
-		LinkedList<Node> nextLevel = new LinkedList<Node>();
+		LinkedList<Edge> currentLevel = new LinkedList<Edge>();
+		LinkedList<Edge> nextLevel = new LinkedList<Edge>();
 
 		currentLevel.add(root);
 
@@ -107,12 +95,12 @@ public class MST {
 
 			while (!currentLevel.isEmpty()) {
 
-				Node temp = null;
+				Edge temp = null;
 				temp = currentLevel.remove();
 
 				listOfNodes.add(temp);
 
-				LinkedList<Node> children = temp.getChildren();
+				LinkedList<Edge> children = temp.getChildren();
 
 				for (int i = 0; i < children.size(); i++) {
 
@@ -121,7 +109,7 @@ public class MST {
 
 			}
 
-			LinkedList<Node> tempList = currentLevel;
+			LinkedList<Edge> tempList = currentLevel;
 			currentLevel = nextLevel;
 			nextLevel = tempList;
 
@@ -132,9 +120,9 @@ public class MST {
 	}
 
 	// 3rd function
-	public void insertNode(Node newNode) {
+	public void insertNode(Edge newNode) {
 
-		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
+		LinkedList<Edge> listOfNodes = this.getListOfNodesInMST();
 		LinkedList<Float> distance = new LinkedList<Float>();
 
 		for (int i = 0; i < listOfNodes.size(); i++) {
@@ -158,13 +146,13 @@ public class MST {
 	// 4th function
 	public void removeEdge(Edge newEdge) {
 
-		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
+		LinkedList<Edge> listOfNodes = this.getListOfNodesInMST();
 
 		for (int i = 0; i < listOfNodes.size(); i++) {
 
-			if (newEdge.getID().compareTo(listOfNodes.get(i).getEdge().getID()) == 0) {
+			if (newEdge.getID().compareTo(listOfNodes.get(i).getID()) == 0) {
 
-				Node removedNode = listOfNodes.remove(i);
+				Edge removedNode = listOfNodes.remove(i);
 
 				for (int j = 0; j < removedNode.getChildren().size(); j++) {
 					insertNode(removedNode.getChildren().get(j));
@@ -178,14 +166,14 @@ public class MST {
 	/**
 	 * @return the root
 	 */
-	public Node getRoot() {
+	public Edge getRoot() {
 		return root;
 	}
 
 	/**
 	 * @param root the root to set
 	 */
-	public void setRoot(Node root) {
+	public void setRoot(Edge root) {
 		this.root = root;
 	}
 

@@ -14,7 +14,7 @@ public class Simulation {
 			return;
 		}
 
-		int d = Integer.parseInt(args[0]);
+		float d =Integer.parseInt(args[0]);
 		File file = new File(args[1]);
 
 		Graph g = new Graph();
