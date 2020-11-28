@@ -34,7 +34,7 @@ public class MST {
 				Node temp = null;
 				temp = currentLevel.remove();
 
-				System.out.print(temp);
+				System.out.print(temp + " ");
 
 				LinkedList<Node> children = temp.getChildren();
 

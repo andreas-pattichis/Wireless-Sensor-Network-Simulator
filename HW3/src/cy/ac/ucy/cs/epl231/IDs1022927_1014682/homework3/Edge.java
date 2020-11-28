@@ -55,6 +55,10 @@ public class Edge {
 
 		return (temp > 0 && temp <= maxDistance);
 	}
+	
+	public boolean isAlreadyANeighbour(Edge other) {
+		return neighbours.contains(other);
+	}
 
 	public void addNeighbour(Edge node) {
 		neighbours.add(node);
@@ -72,20 +76,39 @@ public class Edge {
 
 		return temp.toString();
 	}
-	
+
 	public void deleteNeighbour(Edge toBeDeleted) {
 		this.neighbours.remove(toBeDeleted);
-	
+
 	}
 
 	public Edge getClosestNeighbour() {
-		
+
 		if (neighbours.size() > 0) {
 			float minDistance = calculateDistance(neighbours.get(0));
 			Edge e = neighbours.get(0);
 
 			for (int i = 1; i < neighbours.size(); i++)
 				if (calculateDistance(neighbours.get(i)) < minDistance) {
+					minDistance = calculateDistance(neighbours.get(i));
+					e = neighbours.get(i);
+				}
+			return e;
+		}
+
+		return null;
+	}
+
+	public Edge getClosestNeighbour(LinkedList<Node> visited) {
+
+		if (neighbours.size() > 0) {
+			float minDistance = Float.POSITIVE_INFINITY;
+			Edge e = null;
+
+			for (int i = 0; i < neighbours.size(); i++)
+				if (calculateDistance(neighbours.get(i)) < minDistance
+						&& !visited.contains(new Node(neighbours.get(i)))) {
+
 					minDistance = calculateDistance(neighbours.get(i));
 					e = neighbours.get(i);
 				}
