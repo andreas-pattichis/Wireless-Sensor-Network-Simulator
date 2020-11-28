@@ -55,6 +55,10 @@ public class Edge {
 		children.add(newChild);
 
 	}
+	
+	public void deleteChild(Edge child) {
+		 this.children.remove(child);
+	}
 
 	//-------
 	public float calculateDistance(Edge other) {
@@ -142,9 +146,9 @@ public class Edge {
 	
 
 
-	public Float getClosestDistance() {
+	public Float getClosestDistance(LinkedList<Edge> visited) {
 
-		Edge e = getClosestNeighbour();
+		Edge e = getClosestNeighbour(visited);
 		
 		return calculateDistance(e);
 	}
