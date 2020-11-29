@@ -27,10 +27,10 @@ public class Simulation {
 				g.insertEdge(test);
 				g.findNeighbors(test);
 			}
-			
-			//System.out.println("HASHTABLE:\n----------");
-			//g.printHashTable();
-			//System.out.println();
+
+			// System.out.println("HASHTABLE:\n----------");
+			// g.printHashTable();
+			// System.out.println();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class Simulation {
 		Scanner in = new Scanner(System.in);
 
 		int choice = 0;
-		
+
 		MST mst = null;
 
 		while (choice != 6) {
@@ -48,8 +48,6 @@ public class Simulation {
 					"\nMENU:\n1. Calculate Minimum Spanning Tree.\n2. Print Minimum Spanning Tree.\n3. Insert new node.\n4. Delete node.\n5. Inform fire station A for the highest network temperature.\n6. Exit the simulation.\n\nInsert your choice: ");
 			choice = in.nextInt();
 			System.out.println();
-
-			
 
 			switch (choice) {
 			case 1:
@@ -63,20 +61,30 @@ public class Simulation {
 				System.out.println("\n\n\n");
 				break;
 			case 3:
-				System.out.print("Give the new node that you want to insert: \n\t>");
+				System.out.print("Give the new node that you want to insert: \n\t> ");
 				String newNode = in.next();
 				mst.insertEdge(new Node(new Edge(newNode, d)));
 				System.out.println();
 				break;
 			case 4:
-				System.out.print("Give the node that you want to remove: \n\t>");
+				System.out.print("Give the node that you want to remove: \n\t> ");
 				String toBeRemoved = in.next();
 				mst.removeEdge(new Node(new Edge(toBeRemoved, d)));
 				System.out.println();
+				break;
 			case 5:
-				System.out.print("Not done yet.");
+				System.out.print("Give the ID of the fire station that you want to start: \n\t> ");
+				String id = in.next();
+				MST temp = g.calculateMST(g.findEdge(id));
+				System.out.println();
+				temp.display();
+				System.out.println("\n");
+				temp.informFireStation();
+				break;
+				
 			case 6:
 				System.out.print("You have selected to end the simulation.");
+				break;
 			default:
 				System.out.println("Wrong input. Please try again!\n");
 			}

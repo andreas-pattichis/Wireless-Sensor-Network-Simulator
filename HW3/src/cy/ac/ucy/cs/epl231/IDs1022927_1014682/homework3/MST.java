@@ -1,6 +1,7 @@
 package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class MST {
 
@@ -14,9 +15,7 @@ public class MST {
 		treeSize = 1;
 
 	}
-	
-	
-	
+
 //2nd function
 	public void display() {
 
@@ -35,8 +34,6 @@ public class MST {
 
 				Node temp = null;
 				temp = currentLevel.remove();
-				
-				
 
 				System.out.print(temp + "   ");
 
@@ -74,23 +71,21 @@ public class MST {
 	}
 
 	public void insertNodeAsChild(Edge dest, Node newNode) {
-		
+
 		LinkedList<Node> temp = getListOfNodesInMST();
-		
-		for(int i =  0; i < temp.size(); i++) {
-			if(temp.get(i).getID().compareTo(dest.getID()) == 0) {
+
+		for (int i = 0; i < temp.size(); i++) {
+			if (temp.get(i).getID().compareTo(dest.getID()) == 0) {
 				temp.get(i).addChild(newNode);
 				treeSize++;
 			}
 		}
-		
 
 	}
 
 	private LinkedList<Node> getListOfNodesInMST() {
 
 		LinkedList<Node> listOfNodes = new LinkedList<Node>();
-		
 
 		LinkedList<Node> currentLevel = new LinkedList<Node>();
 		LinkedList<Node> nextLevel = new LinkedList<Node>();
@@ -149,20 +144,18 @@ public class MST {
 
 	}
 
-	// 4th function 
+	// 4th function
 	public void removeEdge(Node edgeToBeRemoved) {
 
 		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
 
 		for (int i = 0; i < listOfNodes.size(); i++) {
-			
+
 			LinkedList<Node> currentChildren = listOfNodes.get(i).getChildren();
 
 			if (currentChildren.contains(edgeToBeRemoved)) {
 
 				listOfNodes.get(i).deleteChild(edgeToBeRemoved);
-				
-				
 
 				for (int j = 0; j < edgeToBeRemoved.getChildren().size(); j++) {
 					insertEdge(edgeToBeRemoved.getChildren().get(j));
@@ -172,8 +165,26 @@ public class MST {
 		}
 
 	}
-	
-	
+
+	// 5th Function
+	public void informFireStation() {
+		dfsWithoutRecursion(root);
+	}
+
+	/*
+	 * We can also implement graph DFS without recursion. We'll simply use a Stack:
+	 * 
+	 * We'll start from a given node 
+	 * Push start node into stack 
+	 * While Stack not empty 
+	 * Mark current node as visited 
+	 * Visit current node 
+	 * Push unvisited adjacent vertices
+	 */
+	public void dfsWithoutRecursion(Node start) {
+		
+	    
+	}
 
 	/**
 	 * @return the root
