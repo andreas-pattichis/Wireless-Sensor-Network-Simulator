@@ -108,7 +108,7 @@ public class Graph {
 		
 		
 
-		while (mst.getTreeSize() <= noOfEdges) {
+		while (mst.getTreeSize() < noOfEdges) {
 		
 			LinkedList<Edge> closest = new LinkedList<Edge>();
 			LinkedList<Float> distance = new LinkedList<Float>();
@@ -116,7 +116,7 @@ public class Graph {
 			for (int i = 0; i < visited.size(); i++)
 				if (visited.get(i).getClosestNeighbour(visited) != null) {
 					closest.add(visited.get(i).getClosestNeighbour(visited));
-					distance.add(visited.get(i).getClosestDistance());
+					distance.add(visited.get(i).getClosestDistance(visited));
 				}
 
 			int idxMinDistance = 0;

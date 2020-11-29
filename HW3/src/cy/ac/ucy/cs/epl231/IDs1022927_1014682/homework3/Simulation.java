@@ -14,7 +14,7 @@ public class Simulation {
 			return;
 		}
 
-		float d =Integer.parseInt(args[0]);
+		float d = Integer.parseInt(args[0]);
 		File file = new File(args[1]);
 
 		Graph g = new Graph();
@@ -32,10 +32,32 @@ public class Simulation {
 			e.printStackTrace();
 		}
 
-		
+		// 2nd function
 		MST mst = g.calculateMST(g.findEdge("02"));
 
 		mst.display();
+
+		System.out.println("\n\n\n");
+
+		// 4th funtion
+		
+		/*
+		 * Edge toBeRemoved = g.findEdge("20"); mst.removeEdge(toBeRemoved);
+		 * 
+		 * mst.display();
+		 * 
+		 * System.out.println("\n\n\n");
+		 */
+		 
+
+		// 3rd function
+
+		mst.insertEdge(new Edge("20	[2, 5]	30", d));
+
+		mst.display();
+
+		System.out.println("\n\n\n");
+
 	}
 
 }
