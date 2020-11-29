@@ -100,8 +100,9 @@ public class Graph {
 
 	public MST calculateMST(Edge e) {
 
+		Node root = new Node(e);
 		
-		MST mst = new MST(e);
+		MST mst = new MST(root);
 
 		LinkedList<Edge> visited = new LinkedList<Edge>();
 		visited.add(e);
@@ -128,7 +129,9 @@ public class Graph {
 					minDistance = distance.get(i);
 				}
 
-			mst.insertNodeAsChild(visited.get(idxMinDistance),closest.get(idxMinDistance));
+			Node newNode = new Node(closest.get(idxMinDistance));
+			
+			mst.insertNodeAsChild(visited.get(idxMinDistance),newNode);
 			visited.add(closest.get(idxMinDistance));
 			
 	
@@ -140,21 +143,6 @@ public class Graph {
 
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Graph other = (Graph) obj;
-		if (!Arrays.equals(hashTable, other.hashTable))
-			return false;
-		if (noOfEdges != other.noOfEdges)
-			return false;
-		return true;
-	}
 
 	public int getNoOfEdges() {
 

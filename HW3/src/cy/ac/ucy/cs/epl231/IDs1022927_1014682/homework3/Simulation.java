@@ -28,9 +28,9 @@ public class Simulation {
 				g.findNeighbors(test);
 			}
 			
-			System.out.println("HASHTABLE:\n----------");
-			g.printHashTable();
-			System.out.println();
+			//System.out.println("HASHTABLE:\n----------");
+			//g.printHashTable();
+			//System.out.println();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -65,13 +65,13 @@ public class Simulation {
 			case 3:
 				System.out.print("Give the new node that you want to insert: \n\t>");
 				String newNode = in.next();
-				mst.insertEdge(new Edge(newNode, d));
+				mst.insertEdge(new Node(new Edge(newNode, d)));
 				System.out.println();
 				break;
 			case 4:
 				System.out.print("Give the node that you want to remove: \n\t>");
 				String toBeRemoved = in.next();
-				mst.removeEdge(new Edge(toBeRemoved, d));
+				mst.removeEdge(new Node(new Edge(toBeRemoved, d)));
 				System.out.println();
 			case 5:
 				System.out.print("Not done yet.");

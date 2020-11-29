@@ -4,11 +4,11 @@ import java.util.LinkedList;
 
 public class MST {
 
-	private Edge root;
+	private Node root;
 
 	private static int treeSize;
 
-	public MST(Edge root) {
+	public MST(Node root) {
 
 		this.root = root;
 		treeSize = 1;
@@ -20,8 +20,8 @@ public class MST {
 //2nd function
 	public void display() {
 
-		LinkedList<Edge> currentLevel = new LinkedList<Edge>();
-		LinkedList<Edge> nextLevel = new LinkedList<Edge>();
+		LinkedList<Node> currentLevel = new LinkedList<Node>();
+		LinkedList<Node> nextLevel = new LinkedList<Node>();
 
 		currentLevel.add(root);
 
@@ -33,14 +33,14 @@ public class MST {
 
 			while (!currentLevel.isEmpty()) {
 
-				Edge temp = null;
+				Node temp = null;
 				temp = currentLevel.remove();
 				
 				
 
 				System.out.print(temp + "   ");
 
-				LinkedList<Edge> children = temp.getChildren();
+				LinkedList<Node> children = temp.getChildren();
 
 				for (int i = 0; i < children.size(); i++) {
 					nextLevel.add(children.get(i));
@@ -48,7 +48,7 @@ public class MST {
 
 			}
 
-			LinkedList<Edge> tempList = currentLevel;
+			LinkedList<Node> tempList = currentLevel;
 			currentLevel = nextLevel;
 			nextLevel = tempList;
 
@@ -73,20 +73,27 @@ public class MST {
 		this.treeSize = treeSize;
 	}
 
-	public void insertNodeAsChild(Edge dest, Edge newNode) {
-
-		dest.addChild(newNode);
-		treeSize++;
+	public void insertNodeAsChild(Edge dest, Node newNode) {
+		
+		LinkedList<Node> temp = getListOfNodesInMST();
+		
+		for(int i =  0; i < temp.size(); i++) {
+			if(temp.get(i).getID().compareTo(dest.getID()) == 0) {
+				temp.get(i).addChild(newNode);
+				treeSize++;
+			}
+		}
+		
 
 	}
 
-	private LinkedList<Edge> getListOfNodesInMST() {
+	private LinkedList<Node> getListOfNodesInMST() {
 
-		LinkedList<Edge> listOfNodes = new LinkedList<Edge>();
+		LinkedList<Node> listOfNodes = new LinkedList<Node>();
 		
 
-		LinkedList<Edge> currentLevel = new LinkedList<Edge>();
-		LinkedList<Edge> nextLevel = new LinkedList<Edge>();
+		LinkedList<Node> currentLevel = new LinkedList<Node>();
+		LinkedList<Node> nextLevel = new LinkedList<Node>();
 
 		currentLevel.add(root);
 
@@ -94,12 +101,12 @@ public class MST {
 
 			while (!currentLevel.isEmpty()) {
 
-				Edge temp = null;
+				Node temp = null;
 				temp = currentLevel.remove();
 
 				listOfNodes.add(temp);
 
-				LinkedList<Edge> children = temp.getChildren();
+				LinkedList<Node> children = temp.getChildren();
 
 				for (int i = 0; i < children.size(); i++) {
 
@@ -108,7 +115,7 @@ public class MST {
 
 			}
 
-			LinkedList<Edge> tempList = currentLevel;
+			LinkedList<Node> tempList = currentLevel;
 			currentLevel = nextLevel;
 			nextLevel = tempList;
 
@@ -119,9 +126,9 @@ public class MST {
 	}
 
 	// 3rd function
-	public void insertEdge(Edge newNode) {
+	public void insertEdge(Node newNode) {
 
-		LinkedList<Edge> listOfNodes = this.getListOfNodesInMST();
+		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
 		LinkedList<Float> distance = new LinkedList<Float>();
 
 		for (int i = 0; i < listOfNodes.size(); i++) {
@@ -143,13 +150,13 @@ public class MST {
 	}
 
 	// 4th function 
-	public void removeEdge(Edge edgeToBeRemoved) {
+	public void removeEdge(Node edgeToBeRemoved) {
 
-		LinkedList<Edge> listOfNodes = this.getListOfNodesInMST();
+		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
 
 		for (int i = 0; i < listOfNodes.size(); i++) {
 			
-			LinkedList<Edge> currentChildren = listOfNodes.get(i).getChildren();
+			LinkedList<Node> currentChildren = listOfNodes.get(i).getChildren();
 
 			if (currentChildren.contains(edgeToBeRemoved)) {
 
@@ -171,14 +178,14 @@ public class MST {
 	/**
 	 * @return the root
 	 */
-	public Edge getRoot() {
+	public Node getRoot() {
 		return root;
 	}
 
 	/**
 	 * @param root the root to set
 	 */
-	public void setRoot(Edge root) {
+	public void setRoot(Node root) {
 		this.root = root;
 	}
 
