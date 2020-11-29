@@ -105,6 +105,10 @@ public class Edge {
 	public String getID() {
 		return ID;
 	}
+	
+	public float getTemperature() {
+		return temperature;
+	}
 
 	public String toString() {
 

@@ -5,14 +5,17 @@ import java.util.Stack;
 
 public class MST {
 
-	private Node root;
+	private Node startingNode;
 
 	private static int treeSize;
+	
+	private float maxTemp;
 
-	public MST(Node root) {
+	public MST(Node n) {
 
-		this.root = root;
+		this.startingNode = n;
 		treeSize = 1;
+		maxTemp = n.getTemperature();
 
 	}
 
@@ -22,7 +25,7 @@ public class MST {
 		LinkedList<Node> currentLevel = new LinkedList<Node>();
 		LinkedList<Node> nextLevel = new LinkedList<Node>();
 
-		currentLevel.add(root);
+		currentLevel.add(startingNode);
 
 		int level = 0;
 
@@ -90,7 +93,7 @@ public class MST {
 		LinkedList<Node> currentLevel = new LinkedList<Node>();
 		LinkedList<Node> nextLevel = new LinkedList<Node>();
 
-		currentLevel.add(root);
+		currentLevel.add(startingNode);
 
 		do {
 
@@ -167,37 +170,29 @@ public class MST {
 	}
 
 	// 5th Function
-	public void informFireStation() {
-		dfsWithoutRecursion(root);
-	}
-
-	/*
-	 * We can also implement graph DFS without recursion. We'll simply use a Stack:
-	 * 
-	 * We'll start from a given node 
-	 * Push start node into stack 
-	 * While Stack not empty 
-	 * Mark current node as visited 
-	 * Visit current node 
-	 * Push unvisited adjacent vertices
-	 */
-	public void dfsWithoutRecursion(Node start) {
+	public float informFireStation() {
+		informNode(startingNode);
 		
-	    
+		return (maxTemp);
 	}
 
-	/**
-	 * @return the root
-	 */
-	public Node getRoot() {
-		return root;
+	
+	private void informNode(Node newNode) {
+		if(newNode == null)
+			return;
+		
+		for(int i = 0; i < newNode.getChildren().size(); i++) {
+			informNode(newNode.getChildren().get(i));
+			
+			
+			if(newNode.getChildren().get(i).getTemperature() > this.maxTemp)
+				maxTemp = newNode.getChildren().get(i).getTemperature();
+		}
+		
+		
+		
+		  
 	}
 
-	/**
-	 * @param root the root to set
-	 */
-	public void setRoot(Node root) {
-		this.root = root;
-	}
 
 }

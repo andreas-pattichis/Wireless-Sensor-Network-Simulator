@@ -57,6 +57,8 @@ public class Node extends Edge {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	

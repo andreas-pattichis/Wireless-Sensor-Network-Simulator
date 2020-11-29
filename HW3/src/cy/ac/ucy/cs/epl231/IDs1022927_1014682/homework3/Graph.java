@@ -81,6 +81,22 @@ public class Graph {
 		}
 
 	}
+	
+	public Edge deleteEdge(String ID) {
+		
+		Edge toBeRemoved = findEdge(ID);
+		
+		for(int i = 0; i < toBeRemoved.neighbours.size(); i++) {
+			toBeRemoved.neighbours.get(i).deleteNeighbour(toBeRemoved);
+		}
+		
+		hashTable[this.calculateHashkey(toBeRemoved)].remove(toBeRemoved);
+		
+		noOfEdges--;
+		
+		return toBeRemoved;
+		
+	}
 
 	public void insertEdge(Edge newNode) {
 
