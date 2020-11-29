@@ -78,12 +78,12 @@ public class Simulation {
 				in.nextLine();
 				String newNode = in.nextLine();
 
-				/*
-				 * Edge test = new Edge(newNode, d); g.insertEdge(test); g.findNeighbors(test);
-				 * mst = g.calculateMST(g.findEdge("02"));
-				 */
+				Edge test = new Edge(newNode, d);
+				g.insertEdge(test);
+				g.findNeighbors(test);
+				mst = g.calculateMST(g.findEdge("02"));
 
-				mst.insertEdge(new Node(new Edge(newNode, d))); 
+				// mst.insertEdge(new Node(new Edge(newNode, d)));
 				System.out.println();
 				break;
 			case 4:
