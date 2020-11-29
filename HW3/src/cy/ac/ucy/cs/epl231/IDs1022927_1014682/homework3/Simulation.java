@@ -39,6 +39,8 @@ public class Simulation {
 		Scanner in = new Scanner(System.in);
 
 		int choice = 0;
+		
+		MST mst = null;
 
 		while (choice != 6) {
 			System.out.print("-------------------------------------");
@@ -47,10 +49,11 @@ public class Simulation {
 			choice = in.nextInt();
 			System.out.println();
 
-			MST mst = g.calculateMST(g.findEdge("02"));
+			
 
 			switch (choice) {
 			case 1:
+				mst = g.calculateMST(g.findEdge("02"));
 				// 2nd function
 				System.out.println("\nThe MST has been calculated.");
 				break;
