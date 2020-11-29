@@ -16,8 +16,10 @@ public class Simulation {
 			return;
 		}
 
+		String filename = args[1];
+
 		float d = Integer.parseInt(args[0]);
-		File file = new File(args[1]);
+		File file = new File(filename);
 
 		Graph g = new Graph();
 
@@ -51,67 +53,82 @@ public class Simulation {
 
 			switch (choice) {
 			case 1:
+
 				mst = g.calculateMST(g.findEdge("02"));
 				System.out.print("\nThe MST has been calculated.\n\n");
 				break;
+
 			case 2:
-				if(mst == null) {
+				if (mst == null) {
 					System.out.print("\nMST has to be calculated first!\n\n");
 					break;
 				}
 				mst.display();
 				System.out.println("\n");
 				break;
+
 			case 3:
-				if(mst == null) {
+
+				if (mst == null) {
 					System.out.print("\nMST has to be calculated first!\n\n");
 					break;
 				}
-				
+
 				System.out.print("Give the new node that you want to insert: \n\t> ");
 				in.nextLine();
 				String newNode = in.nextLine();
-				
+
 				Edge test = new Edge(newNode, d);
 				g.insertEdge(test);
 				g.findNeighbors(test);
 				mst = g.calculateMST(g.findEdge("02"));
-				
+
 				/* mst.insertEdge(new Node(new Edge(newNode, d))); */
 				System.out.println();
 				break;
 			case 4:
-				if(mst == null) {
+
+				if (mst == null) {
 					System.out.print("\nMST has to be calculated first!\n\n");
 					break;
 				}
+
 				System.out.print("Give the ID of the node you want to remove: \n\t> ");
 				String edgeID = in.next();
-				Edge removed  = g.deleteEdge(edgeID);
+				Edge removed = g.deleteEdge(edgeID);
 				mst = g.calculateMST(g.findEdge("02"));
 				/* mst.removeEdge(new Node(new Edge(toBeRemoved, d))); */
 				System.out.println("\tNode " + removed + " was removed successfully!");
 				break;
 			case 5:
-				if(mst == null) {
+
+				if (mst == null) {
 					System.out.print("\nMST has to be calculated first!\n\n");
 					break;
 				}
+
 				System.out.print("Give the ID of the fire station that you want to start: \n\t> ");
 				String id = in.next();
 				MST temp = g.calculateMST(g.findEdge(id));
 				System.out.println("\nThe highest temperature recorded was " + temp.informFireStation() + " °C.\n\n");
-				System.out.println(temp.informFireStation());
 				break;
-				
+
 			case 6:
+
+				try {
+					g.printHashTableInFile(filename);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 				System.out.print("-------------------------------------------------------------+");
 				System.out.print("\nYou have selected to terminate the simulation.Good bye!\n");
 				System.out.print("-------------------------------------------------------------+");
 				break;
+
 			default:
 				System.out.println("Wrong input. Please try again!\n");
-				
+
 			}
 		}
 
