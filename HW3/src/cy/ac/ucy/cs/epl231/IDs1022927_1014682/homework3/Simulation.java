@@ -2,7 +2,9 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Simulation {
@@ -25,38 +27,57 @@ public class Simulation {
 				g.insertEdge(test);
 				g.findNeighbors(test);
 			}
-
+			
+			System.out.println("HASHTABLE:\n----------");
 			g.printHashTable();
+			System.out.println();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		// 2nd function
-		MST mst = g.calculateMST(g.findEdge("02"));
+		Scanner in = new Scanner(System.in);
 
-		mst.display();
+		int choice = 0;
 
-		System.out.println("\n\n\n");
+		while (choice != 6) {
+			System.out.print("-------------------------------------");
+			System.out.print(
+					"\nMENU:\n1. Calculate Minimum Spanning Tree.\n2. Print Minimum Spanning Tree.\n3. Insert new node.\n4. Delete node.\n5. Inform fire station A for the highest network temperature.\n6. Exit the simulation.\n\nInsert your choice: ");
+			choice = in.nextInt();
+			System.out.println();
 
-		// 4th funtion
-		
-		/*
-		 * Edge toBeRemoved = g.findEdge("20"); mst.removeEdge(toBeRemoved);
-		 * 
-		 * mst.display();
-		 * 
-		 * System.out.println("\n\n\n");
-		 */
-		 
+			MST mst = g.calculateMST(g.findEdge("02"));
 
-		// 3rd function
-
-		mst.insertEdge(new Edge("20	[2, 5]	30", d));
-
-		mst.display();
-
-		System.out.println("\n\n\n");
+			switch (choice) {
+			case 1:
+				// 2nd function
+				System.out.println("\nThe MST has been calculated.");
+				break;
+			case 2:
+				// 3rd function
+				mst.display();
+				System.out.println("\n\n\n");
+				break;
+			case 3:
+				System.out.print("Give the new node that you want to insert: \n\t>");
+				String newNode = in.next();
+				mst.insertEdge(new Edge(newNode, d));
+				System.out.println();
+				break;
+			case 4:
+				System.out.print("Give the node that you want to remove: \n\t>");
+				String toBeRemoved = in.next();
+				mst.removeEdge(new Edge(toBeRemoved, d));
+				System.out.println();
+			case 5:
+				System.out.print("Not done yet.");
+			case 6:
+				System.out.print("You have selected to end the simulation.");
+			default:
+				System.out.println("Wrong input. Please try again!\n");
+			}
+		}
 
 	}
 
