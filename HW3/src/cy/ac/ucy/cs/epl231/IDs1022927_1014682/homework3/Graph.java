@@ -1,3 +1,9 @@
+/**
+ * Class that represents a Graph
+ * 
+ * @author Christos Kasoulides, Andreas pattichis
+ */
+
 package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.io.*;
@@ -7,12 +13,16 @@ import java.util.Scanner;
 
 public class Graph {
 
-	private LinkedList<Edge> hashTable[];
+	private LinkedList<Edge> hashTable[]; // Table of linkedlists that indicates a hashtable
 
-	private static int hashTableSize;
+	private static int hashTableSize; // Indicates the hashtable size
 
-	private int noOfEdges;
+	private int noOfEdges; // Indicates the number of edges that are placed in the hashtable
 
+	/**
+	 * Constructor for the class Graph that sets the noOfEdges equal to 0, the
+	 * hashTableSize equal to 5 and initializes all the linkedlists of the hashtable
+	 */
 	public Graph() {
 
 		noOfEdges = 0;
@@ -27,6 +37,10 @@ public class Graph {
 
 	}
 
+	/**
+	 *  
+	 * @param n
+	 */
 	public void findNeighbors(Edge n) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
@@ -37,6 +51,13 @@ public class Graph {
 		}
 	}
 
+	/**
+	 * Method that will find and return the edge that contains the id of the parameter.
+	 * 
+	 * @param ID The id of the wanted edge
+	 * 
+	 * @return The edge that was found
+	 */
 	public Edge findEdge(String ID) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
@@ -48,6 +69,10 @@ public class Graph {
 		return null;
 	}
 
+	
+	/**
+	 * Method that prints the hashtable to the console
+	 */
 	public void printHashTable() {
 		for (int i = 0; i < hashTableSize; i++) {
 			System.out.println("hashTable[" + i + "]");
@@ -57,6 +82,13 @@ public class Graph {
 		}
 	}
 
+	/**
+	 * Method that prints the hashtable to a text file
+	 * 
+	 * @param fileName The name of the text file
+	 * 
+	 * @throws IOException
+	 */
 	public void printHashTableInFile(String fileName) throws IOException {
 
 		File file = new File(fileName);
@@ -78,6 +110,13 @@ public class Graph {
 
 	}
 
+	/**
+	 * Method that will calculate the hashkey and return the value of it.
+	 * 
+	 * @param newNode
+	 * 
+	 * @return
+	 */
 	public int calculateHashkey(Edge newNode) {
 		int temp = Integer.parseInt(newNode.getID());
 
@@ -105,6 +144,14 @@ public class Graph {
 
 	}
 
+	/**
+	 * Method that will find the edge that was given as a parameter and delete it
+	 * from the graph. The method will return the deleted edge.
+	 * 
+	 * @param ID The id of the edge that will be removed.
+	 * 
+	 * @return The deleted edge
+	 */
 	public Edge deleteEdge(String ID) {
 
 		Edge toBeRemoved = findEdge(ID);
@@ -121,6 +168,11 @@ public class Graph {
 
 	}
 
+	/**
+	 * Method that will add the new edge that is given as a parameter to the graph
+	 * 
+	 * @param newNode
+	 */
 	public void insertEdge(Edge newNode) {
 
 		noOfEdges++;
@@ -137,6 +189,15 @@ public class Graph {
 
 	}
 
+	/**
+	 * Method that implicates the first operation that was asked. It gets the
+	 * starting edge as a parameter and goes to calculate and store the mst. The
+	 * method returns the mst.
+	 * 
+	 * @param e The starting edge
+	 * 
+	 * @return The minimum spanning tree that was created.
+	 */
 	public MST calculateMST(Edge e) {
 
 		Node root = new Node(e);
@@ -174,9 +235,13 @@ public class Graph {
 		}
 
 		return mst;
-
 	}
 
+	/**
+	 * Getter method that returns the number of edges
+	 * 
+	 * @return the number of edges
+	 */
 	public int getNoOfEdges() {
 
 		return noOfEdges;
