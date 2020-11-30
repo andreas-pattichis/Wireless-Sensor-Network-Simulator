@@ -16,7 +16,7 @@ public class Vertex {
 	private boolean sensor; // Boolean value of that stores if each vertex is a sensor
 	private boolean controlCenter; // Boolean value of that stores if each vertex is a control center
 
-	protected LinkedList<Vertex> neighbours; // Linked list of vertex that stores all the neighbours of each edge
+	protected LinkedList<Vertex> neighbours; // Linked list of vertex that stores all the neighbours of each vertex
 
 	private float maxDistance; // Float value that will store the maximum distance
 
@@ -53,8 +53,8 @@ public class Vertex {
 	}
 
 	/**
-	 * Copy constructor of the class edge that will get another vertex as a parameter
-	 * and copy the values of it, by creating a new edge with the same content.
+	 * Copy constructor of the class vertex that will get another vertex as a parameter
+	 * and copy the values of it, by creating a new vertex with the same content.
 	 * 
 	 * @param other The vertex that will be copied
 	 */
