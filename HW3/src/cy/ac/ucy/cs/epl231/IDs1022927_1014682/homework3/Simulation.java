@@ -25,8 +25,8 @@ public class Simulation {
 
 		try (Scanner sc = new Scanner(file)) {
 			while (sc.hasNextLine()) {
-				Edge test = new Edge(sc.nextLine(), d);
-				g.insertEdge(test);
+				Vertex test = new Vertex(sc.nextLine(), d);
+				g.insertVertex(test);
 				g.findNeighbors(test);
 			}
 
@@ -54,7 +54,7 @@ public class Simulation {
 			switch (choice) {
 			case 1:
 
-				mst = g.calculateMST(g.findEdge("02"));
+				mst = g.calculateMST(g.findVertex("02"));
 				System.out.print("\nThe MST has been calculated.\n\n");
 				break;
 
@@ -78,10 +78,10 @@ public class Simulation {
 				in.nextLine();
 				String newNode = in.nextLine();
 
-				Edge test = new Edge(newNode, d);
-				g.insertEdge(test);
+				Vertex test = new Vertex(newNode, d);
+				g.insertVertex(test);
 				g.findNeighbors(test);
-				mst = g.calculateMST(g.findEdge("02"));
+				mst = g.calculateMST(g.findVertex("02"));
 
 				// mst.insertEdge(new Node(new Edge(newNode, d)));
 				System.out.println();
@@ -95,8 +95,8 @@ public class Simulation {
 
 				System.out.print("Give the ID of the node you want to remove: \n\t> ");
 				String edgeID = in.next();
-				Edge removed = g.deleteEdge(edgeID);
-				mst = g.calculateMST(g.findEdge("02"));
+				Vertex removed = g.deleteVertex(edgeID);
+				mst = g.calculateMST(g.findVertex("02"));
 				/* mst.removeEdge(new Node(new Edge(toBeRemoved, d))); */
 				System.out.println("\tNode " + removed + " was removed successfully!");
 				break;
@@ -109,7 +109,7 @@ public class Simulation {
 
 				System.out.print("Give the ID of the fire station that you want to start: \n\t> ");
 				String id = in.next();
-				MST temp = g.calculateMST(g.findEdge(id));
+				MST temp = g.calculateMST(g.findVertex(id));
 				System.out.println("\nThe highest temperature recorded was " + temp.informFireStation() + " °C.\n\n");
 				break;
 

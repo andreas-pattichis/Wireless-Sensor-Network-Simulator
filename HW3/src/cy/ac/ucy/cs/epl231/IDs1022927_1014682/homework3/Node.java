@@ -8,7 +8,7 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.util.LinkedList;
 
-public class Node extends Edge {
+public class Node extends Vertex {
 
 	private LinkedList<Node> children; // List that stores the children of the node
 
@@ -19,7 +19,7 @@ public class Node extends Edge {
 	 * 
 	 * @param e
 	 */
-	public Node(Edge e) {
+	public Node(Vertex e) {
 		super(e);
 		children = new LinkedList<Node>();
 	}

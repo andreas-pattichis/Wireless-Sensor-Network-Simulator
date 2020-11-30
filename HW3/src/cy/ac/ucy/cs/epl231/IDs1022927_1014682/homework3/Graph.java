@@ -13,19 +13,19 @@ import java.util.Scanner;
 
 public class Graph {
 
-	private LinkedList<Edge> hashTable[]; // Table of linkedlists that indicates a hashtable
+	private LinkedList<Vertex> hashTable[]; // Table of linkedlists that indicates a hashtable
 
 	private static int hashTableSize; // Indicates the hashtable size
 
-	private int noOfEdges; // Indicates the number of edges that are placed in the hashtable
+	private int noOfVertices; // Indicates the number of edges that are placed in the hashtable
 
 	/**
-	 * Constructor for the class Graph that sets the noOfEdges equal to 0, the
+	 * Constructor for the class Graph that sets the noOfVertices equal to 0, the
 	 * hashTableSize equal to 5 and initializes all the linkedlists of the hashtable
 	 */
 	public Graph() {
 
-		noOfEdges = 0;
+		noOfVertices = 0;
 
 		hashTableSize = 5;
 
@@ -41,7 +41,7 @@ public class Graph {
 	 *  
 	 * @param n
 	 */
-	public void findNeighbors(Edge n) {
+	public void findNeighbors(Vertex n) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
 				if (n.isNeighbour(hashTable[i].get(j)) && !n.isAlreadyANeighbour(hashTable[i].get(j))) {
@@ -52,13 +52,13 @@ public class Graph {
 	}
 
 	/**
-	 * Method that will find and return the edge that contains the id of the parameter.
+	 * Method that will find and return the vertex that contains the id of the parameter.
 	 * 
-	 * @param ID The id of the wanted edge
+	 * @param ID The id of the wanted vertex
 	 * 
-	 * @return The edge that was found
+	 * @return The vertex that was found
 	 */
-	public Edge findEdge(String ID) {
+	public Vertex findVertex(String ID) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
 				if (hashTable[i].get(j).getID().compareTo(ID) == 0) {
@@ -117,7 +117,7 @@ public class Graph {
 	 * 
 	 * @return
 	 */
-	public int calculateHashkey(Edge newNode) {
+	public int calculateHashkey(Vertex newNode) {
 		int temp = Integer.parseInt(newNode.getID());
 
 		return temp % hashTableSize;
@@ -126,7 +126,7 @@ public class Graph {
 
 	private void rehashTable() {
 
-		LinkedList<Edge> temp[] = hashTable;
+		LinkedList<Vertex> temp[] = hashTable;
 		int previousSize = hashTableSize;
 
 		hashTableSize *= 10;
@@ -138,23 +138,23 @@ public class Graph {
 
 		for (int i = 0; i < previousSize; i++) {
 			while (!temp[i].isEmpty()) {
-				insertEdge(temp[i].remove());
+				insertVertex(temp[i].remove());
 			}
 		}
 
 	}
 
 	/**
-	 * Method that will find the edge that was given as a parameter and delete it
-	 * from the graph. The method will return the deleted edge.
+	 * Method that will find the vertex that was given as a parameter and delete it
+	 * from the graph. The method will return the deleted vertex.
 	 * 
-	 * @param ID The id of the edge that will be removed.
+	 * @param ID The id of the vertex that will be removed.
 	 * 
-	 * @return The deleted edge
+	 * @return The deleted vertex
 	 */
-	public Edge deleteEdge(String ID) {
+	public Vertex deleteVertex(String ID) {
 
-		Edge toBeRemoved = findEdge(ID);
+		Vertex toBeRemoved = findVertex(ID);
 
 		for (int i = 0; i < toBeRemoved.neighbours.size(); i++) {
 			toBeRemoved.neighbours.get(i).deleteNeighbour(toBeRemoved);
@@ -162,20 +162,20 @@ public class Graph {
 
 		hashTable[this.calculateHashkey(toBeRemoved)].remove(toBeRemoved);
 
-		noOfEdges--;
+		noOfVertices--;
 
 		return toBeRemoved;
 
 	}
 
 	/**
-	 * Method that will add the new edge that is given as a parameter to the graph
+	 * Method that will add the new vertex that is given as a parameter to the graph
 	 * 
 	 * @param newNode
 	 */
-	public void insertEdge(Edge newNode) {
+	public void insertVertex(Vertex newNode) {
 
-		noOfEdges++;
+		noOfVertices++;
 
 		int key = calculateHashkey(newNode);
 
@@ -198,18 +198,18 @@ public class Graph {
 	 * 
 	 * @return The minimum spanning tree that was created.
 	 */
-	public MST calculateMST(Edge e) {
+	public MST calculateMST(Vertex e) {
 
 		Node root = new Node(e);
 
 		MST mst = new MST(root);
 
-		LinkedList<Edge> visited = new LinkedList<Edge>();
+		LinkedList<Vertex> visited = new LinkedList<Vertex>();
 		visited.add(e);
 
-		while (mst.getTreeSize() < noOfEdges) {
+		while (mst.getTreeSize() < noOfVertices) {
 
-			LinkedList<Edge> closest = new LinkedList<Edge>();
+			LinkedList<Vertex> closest = new LinkedList<Vertex>();
 			LinkedList<Float> distance = new LinkedList<Float>();
 
 			for (int i = 0; i < visited.size(); i++)
@@ -240,11 +240,11 @@ public class Graph {
 	/**
 	 * Getter method that returns the number of edges
 	 * 
-	 * @return the number of edges
+	 * @return the number of vertex
 	 */
-	public int getNoOfEdges() {
+	public int getNoOfVertices() {
 
-		return noOfEdges;
+		return noOfVertices;
 
 	}
 

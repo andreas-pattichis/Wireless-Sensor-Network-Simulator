@@ -100,7 +100,7 @@ public class MST {
 	 * @param dest    The edge that will be the parent
 	 * @param newNode The new node that will be the child of the dest
 	 */
-	public void insertNodeAsChild(Edge dest, Node newNode) {
+	public void insertNodeAsChild(Vertex dest, Node newNode) {
 
 		LinkedList<Node> temp = getListOfNodesInMST();
 
@@ -155,7 +155,7 @@ public class MST {
 	 * @param newNode The node that will be put to the MST
 	 */
 
-	  public void insertEdge(Node newNode) {
+	  public void insertNode(Node newNode) {
 	  
 	  LinkedList<Node> listOfNodes = this.getListOfNodesInMST(); LinkedList<Float>
 	  distance = new LinkedList<Float>();
@@ -181,7 +181,7 @@ public class MST {
 	 * 
 	 * @param edgeToBeRemoved The node that will be removed from the MST
 	 */
-	public void removeEdge(Node edgeToBeRemoved) {
+	public void removeNode(Node edgeToBeRemoved) {
 
 		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
 
@@ -194,7 +194,7 @@ public class MST {
 				listOfNodes.get(i).deleteChild(edgeToBeRemoved);
 
 				for (int j = 0; j < edgeToBeRemoved.getChildren().size(); j++) {
-					insertEdge(edgeToBeRemoved.getChildren().get(j));
+					insertNode(edgeToBeRemoved.getChildren().get(j));
 				}
 
 			}
