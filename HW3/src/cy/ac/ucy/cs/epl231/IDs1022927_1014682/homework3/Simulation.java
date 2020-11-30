@@ -105,10 +105,23 @@ public class Simulation {
 					System.out.print("\nMST has to be calculated first!\n\n");
 					break;
 				}
-
+				
+				Vertex toBeInformed = null;
+				do {
+					
 				System.out.print("Give the ID of the fire station that you want to start: \n\t> ");
 				String id = in.next();
-				MST temp = g.calculateMST(g.findVertex(id));
+					
+				toBeInformed =  g.findVertex(id);
+				
+				if(!toBeInformed.isControlCenter()) {
+					System.out.print("\nThe given ID must be the ID of a fire station\n\n");
+				}
+				
+				}
+				while(!toBeInformed.isControlCenter());
+				
+				MST temp = g.calculateMST(toBeInformed);
 				System.out.println("\nThe highest temperature recorded was " + temp.informFireStation() + " °C.\n\n");
 				break;
 
