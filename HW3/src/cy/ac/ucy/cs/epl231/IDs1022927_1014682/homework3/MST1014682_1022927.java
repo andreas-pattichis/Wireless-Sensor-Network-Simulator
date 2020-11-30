@@ -9,11 +9,11 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 import java.util.LinkedList;
 import java.util.Stack;
 
-public class MST {
+public class MST1014682_1022927 {
 
 	private static int treeSize; // Indicates the size of the minimum spanning tree
 
-	private Node startingNode; // The first node of the minimum spanning tree.
+	private Node1014682_1022927 startingNode; // The first node of the minimum spanning tree.
 
 	private float maxTemp;
 
@@ -24,7 +24,7 @@ public class MST {
 	 * 
 	 * @param n the Node that will be set as the first node of the MST
 	 */
-	public MST(Node n) {
+	public MST1014682_1022927(Node1014682_1022927 n) {
 
 		this.startingNode = n;
 		treeSize = 1;
@@ -38,8 +38,8 @@ public class MST {
 	 */
 	public void display() {
 
-		LinkedList<Node> currentLevel = new LinkedList<Node>();
-		LinkedList<Node> nextLevel = new LinkedList<Node>();
+		LinkedList<Node1014682_1022927> currentLevel = new LinkedList<Node1014682_1022927>();
+		LinkedList<Node1014682_1022927> nextLevel = new LinkedList<Node1014682_1022927>();
 
 		currentLevel.add(startingNode);
 
@@ -51,12 +51,12 @@ public class MST {
 
 			while (!currentLevel.isEmpty()) {
 
-				Node temp = null;
+				Node1014682_1022927 temp = null;
 				temp = currentLevel.remove();
 
 				System.out.print(temp + "   ");
 
-				LinkedList<Node> children = temp.getChildren();
+				LinkedList<Node1014682_1022927> children = temp.getChildren();
 
 				for (int i = 0; i < children.size(); i++) {
 					nextLevel.add(children.get(i));
@@ -64,7 +64,7 @@ public class MST {
 
 			}
 
-			LinkedList<Node> tempList = currentLevel;
+			LinkedList<Node1014682_1022927> tempList = currentLevel;
 			currentLevel = nextLevel;
 			nextLevel = tempList;
 
@@ -100,9 +100,9 @@ public class MST {
 	 * @param dest    The edge that will be the parent
 	 * @param newNode The new node that will be the child of the dest
 	 */
-	public void insertNodeAsChild(Vertex dest, Node newNode) {
+	public void insertNodeAsChild(Vertex1014682_1022927 dest, Node1014682_1022927 newNode) {
 
-		LinkedList<Node> temp = getListOfNodesInMST();
+		LinkedList<Node1014682_1022927> temp = getListOfNodesInMST();
 
 		for (int i = 0; i < temp.size(); i++)
 			if (temp.get(i).getID().compareTo(dest.getID()) == 0) {
@@ -111,12 +111,12 @@ public class MST {
 			}
 	}
 
-	private LinkedList<Node> getListOfNodesInMST() {
+	private LinkedList<Node1014682_1022927> getListOfNodesInMST() {
 
-		LinkedList<Node> listOfNodes = new LinkedList<Node>();
+		LinkedList<Node1014682_1022927> listOfNodes = new LinkedList<Node1014682_1022927>();
 
-		LinkedList<Node> currentLevel = new LinkedList<Node>();
-		LinkedList<Node> nextLevel = new LinkedList<Node>();
+		LinkedList<Node1014682_1022927> currentLevel = new LinkedList<Node1014682_1022927>();
+		LinkedList<Node1014682_1022927> nextLevel = new LinkedList<Node1014682_1022927>();
 
 		currentLevel.add(startingNode);
 
@@ -124,12 +124,12 @@ public class MST {
 
 			while (!currentLevel.isEmpty()) {
 
-				Node temp = null;
+				Node1014682_1022927 temp = null;
 				temp = currentLevel.remove();
 
 				listOfNodes.add(temp);
 
-				LinkedList<Node> children = temp.getChildren();
+				LinkedList<Node1014682_1022927> children = temp.getChildren();
 
 				for (int i = 0; i < children.size(); i++) {
 
@@ -138,7 +138,7 @@ public class MST {
 
 			}
 
-			LinkedList<Node> tempList = currentLevel;
+			LinkedList<Node1014682_1022927> tempList = currentLevel;
 			currentLevel = nextLevel;
 			nextLevel = tempList;
 
@@ -155,9 +155,9 @@ public class MST {
 	 * @param newNode The node that will be put to the MST
 	 */
 
-	  public void insertNode(Node newNode) {
+	  public void insertNode(Node1014682_1022927 newNode) {
 	  
-	  LinkedList<Node> listOfNodes = this.getListOfNodesInMST(); LinkedList<Float>
+	  LinkedList<Node1014682_1022927> listOfNodes = this.getListOfNodesInMST(); LinkedList<Float>
 	  distance = new LinkedList<Float>();
 	  
 	  for (int i = 0; i < listOfNodes.size(); i++) {
@@ -181,13 +181,13 @@ public class MST {
 	 * 
 	 * @param edgeToBeRemoved The node that will be removed from the MST
 	 */
-	public void removeNode(Node edgeToBeRemoved) {
+	public void removeNode(Node1014682_1022927 edgeToBeRemoved) {
 
-		LinkedList<Node> listOfNodes = this.getListOfNodesInMST();
+		LinkedList<Node1014682_1022927> listOfNodes = this.getListOfNodesInMST();
 
 		for (int i = 0; i < listOfNodes.size(); i++) {
 
-			LinkedList<Node> currentChildren = listOfNodes.get(i).getChildren();
+			LinkedList<Node1014682_1022927> currentChildren = listOfNodes.get(i).getChildren();
 
 			if (currentChildren.contains(edgeToBeRemoved)) {
 
@@ -212,7 +212,7 @@ public class MST {
 		return (maxTemp);
 	}
 
-	private void informNode(Node newNode) {
+	private void informNode(Node1014682_1022927 newNode) {
 		if (newNode == null)
 			return;
 
