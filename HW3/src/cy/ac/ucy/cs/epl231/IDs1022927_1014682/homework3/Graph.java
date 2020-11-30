@@ -216,6 +216,9 @@ public class Graph {
 				if (visited.get(i).getClosestNeighbour(visited) != null) {
 					closest.add(visited.get(i).getClosestNeighbour(visited));
 					distance.add(visited.get(i).getClosestDistance(visited));
+				}else {
+					closest.add(null);
+					distance.add(Float.POSITIVE_INFINITY);
 				}
 
 			int idxMinDistance = 0;
