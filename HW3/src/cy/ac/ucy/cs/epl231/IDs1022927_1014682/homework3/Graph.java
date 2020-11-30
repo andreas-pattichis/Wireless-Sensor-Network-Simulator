@@ -183,7 +183,7 @@ public class Graph {
 		hashTable[key].add(newNode);
 
 		if (hashTable[key].size() > 20) {
-			System.out.println("Table has been rehashed.");
+			//System.out.println("Table has been rehashed.");
 			rehashTable();
 		}
 
