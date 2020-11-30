@@ -53,7 +53,6 @@ public class Simulation {
 
 			switch (choice) {
 			case 1:
-
 				mst = g.calculateMST(g.findVertex("02"));
 				System.out.print("\nThe MST has been calculated.\n\n");
 				break;
