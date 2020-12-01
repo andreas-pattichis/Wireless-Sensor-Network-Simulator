@@ -68,6 +68,18 @@ public class Graph1014682_1022927 {
 
 		return null;
 	}
+	
+	
+	public void displayNodes(int cellNumber) {
+		System.out.println("\nCell " + cellNumber + ":  " );
+		for(int i = 0; i < hashTable[cellNumber].size(); i++) {
+			System.out.print(hashTable[cellNumber].get(i).getID() + " ");
+		}
+		
+		System.out.println();
+	}
+	
+	
 
 	
 	/**

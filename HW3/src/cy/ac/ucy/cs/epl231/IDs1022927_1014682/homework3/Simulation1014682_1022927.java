@@ -44,10 +44,10 @@ public class Simulation1014682_1022927 {
 
 		MST1014682_1022927 mst = null;
 
-		while (choice != 6) {
+		while (choice != 7) {
 			System.out.print("-------------------------------------------------------------+");
 			System.out.print(
-					"\nMENU:\n1. Calculate Minimum Spanning Tree.\n2. Print Minimum Spanning Tree.\n3. Insert new node.\n4. Delete node.\n5. Inform fire station A for the highest network temperature.\n6. Exit the simulation.\n\nInsert your choice: ");
+					"\nMENU:\n1. Calculate Minimum Spanning Tree.\n2. Print Minimum Spanning Tree.\n3. Insert new node.\n4. Delete node.\n5. Inform fire station A for the highest network temperature.\n6. Print cells 0,1,4,300.\n7. Exit the simulation.\n\nInsert your choice: ");
 			choice = in.nextInt();
 			System.out.println();
 
@@ -124,8 +124,17 @@ public class Simulation1014682_1022927 {
 				MST1014682_1022927 temp = g.calculateMST(toBeInformed);
 				System.out.println("\nThe highest temperature recorded was " + temp.informFireStation() + " °C.\n\n");
 				break;
-
+				
 			case 6:
+				
+				g.displayNodes(0);
+				g.displayNodes(1);
+				g.displayNodes(4);
+				g.displayNodes(300);
+				
+				break;
+
+			case 7:
 
 				try {
 					g.printHashTableInFile(filename);
