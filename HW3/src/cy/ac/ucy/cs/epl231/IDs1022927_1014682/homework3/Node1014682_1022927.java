@@ -8,9 +8,9 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.util.LinkedList;
 
-public class Node extends Vertex {
+public class Node1014682_1022927 extends Vertex1014682_1022927 {
 
-	private LinkedList<Node> children; // List that stores the children of the node
+	private LinkedList<Node1014682_1022927> children; // List that stores the children of the node
 
 	/**
 	 * Constructor of the Node class that gets an edge as a parameter,calls the
@@ -19,9 +19,9 @@ public class Node extends Vertex {
 	 * 
 	 * @param e
 	 */
-	public Node(Vertex e) {
+	public Node1014682_1022927(Vertex1014682_1022927 e) {
 		super(e);
-		children = new LinkedList<Node>();
+		children = new LinkedList<Node1014682_1022927>();
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class Node extends Vertex {
 	 * 
 	 * @return the list of nodes that show the children of the current node.
 	 */
-	public LinkedList<Node> getChildren() {
+	public LinkedList<Node1014682_1022927> getChildren() {
 		return children;
 
 	}
@@ -51,7 +51,7 @@ public class Node extends Vertex {
 	 * 
 	 * @param newChild The new child that will be added the the list of children.
 	 */
-	public void addChild(Node newChild) {
+	public void addChild(Node1014682_1022927 newChild) {
 		children.add(newChild);
 
 	}
@@ -63,7 +63,7 @@ public class Node extends Vertex {
 	 * 
 	 * @param child The child that will be removed
 	 */
-	public void deleteChild(Node child) {
+	public void deleteChild(Node1014682_1022927 child) {
 		this.children.remove(child);
 	}
 
@@ -95,7 +95,7 @@ public class Node extends Vertex {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Node other = (Node) obj;
+		Node1014682_1022927 other = (Node1014682_1022927) obj;
 		if (children == null) {
 			if (other.children != null)
 				return false;

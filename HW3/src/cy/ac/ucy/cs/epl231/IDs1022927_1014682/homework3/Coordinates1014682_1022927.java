@@ -8,7 +8,7 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.lang.Math;
 
-public class Coordinates {
+public class Coordinates1014682_1022927 {
 
 	private int x; // The X coordinate
 	private int y; // The Y coordinate
@@ -19,7 +19,7 @@ public class Coordinates {
 	 * 
 	 * @param coordinates [x, y]
 	 */
-	public Coordinates(String coordinates) {
+	public Coordinates1014682_1022927(String coordinates) {
 
 		coordinates = coordinates.substring(1, coordinates.length() - 1); // remove first and last char
 
@@ -39,7 +39,7 @@ public class Coordinates {
 	 * 
 	 * @return The distance between the two coordinates
 	 */
-	float calculateDistance(Coordinates other) {
+	float calculateDistance(Coordinates1014682_1022927 other) {
 
 		float result = (float) Math.sqrt((Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2)));
 
@@ -111,7 +111,7 @@ public class Coordinates {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Coordinates other = (Coordinates) obj;
+		Coordinates1014682_1022927 other = (Coordinates1014682_1022927) obj;
 		if (x != other.x)
 			return false;
 		if (y != other.y)

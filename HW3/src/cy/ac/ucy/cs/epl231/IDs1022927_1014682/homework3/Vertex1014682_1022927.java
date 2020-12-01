@@ -8,15 +8,15 @@ package cy.ac.ucy.cs.epl231.IDs1022927_1014682.homework3;
 
 import java.util.LinkedList;
 
-public class Vertex {
+public class Vertex1014682_1022927 {
 
 	private String ID; // String value that indicates the id of each vertex
-	private Coordinates point; // Coordinates that represent the coordinates of each vertex
+	private Coordinates1014682_1022927 point; // Coordinates that represent the coordinates of each vertex
 	private int temperature; // Integer value that represents the temperature of each vertex
 	private boolean sensor; // Boolean value of that stores if each vertex is a sensor
 	private boolean controlCenter; // Boolean value of that stores if each vertex is a control center
 
-	protected LinkedList<Vertex> neighbours; // Linked list of vertex that stores all the neighbours of each vertex
+	protected LinkedList<Vertex1014682_1022927> neighbours; // Linked list of vertex that stores all the neighbours of each vertex
 
 	private float maxDistance; // Float value that will store the maximum distance
 
@@ -28,7 +28,7 @@ public class Vertex {
 	 * @param str id, the coordinates and the temperature in the appropriate form
 	 * @param d   the distance
 	 */
-	public Vertex(String str, float d) {
+	public Vertex1014682_1022927(String str, float d) {
 
 		maxDistance = d; // Stores the distance
 
@@ -36,10 +36,10 @@ public class Vertex {
 		temp = str.split("\t");
 
 		ID = temp[0]; // Stores the id
-		point = new Coordinates(temp[1]); // Stores the coordinate
+		point = new Coordinates1014682_1022927(temp[1]); // Stores the coordinate
 		temperature = Integer.parseInt(temp[2]); // Stores the temperature
 
-		neighbours = new LinkedList<Vertex>(); // Initializes the neighbours list
+		neighbours = new LinkedList<Vertex1014682_1022927>(); // Initializes the neighbours list
 
 		// Checks if the edge is a sensor and/or a control center
 		if (ID.charAt(0) == '0') {
@@ -58,7 +58,7 @@ public class Vertex {
 	 * 
 	 * @param other The vertex that will be copied
 	 */
-	public Vertex(Vertex other) {
+	public Vertex1014682_1022927(Vertex1014682_1022927 other) {
 
 		this.ID = other.ID;
 		this.point = other.point;
@@ -79,7 +79,7 @@ public class Vertex {
 	 * 
 	 * @return The distance between the current vertex and the vertex of the parameter
 	 */
-	public float calculateDistance(Vertex other) {
+	public float calculateDistance(Vertex1014682_1022927 other) {
 		return point.calculateDistance(other.point);
 	}
 
@@ -107,7 +107,7 @@ public class Vertex {
 	 * 
 	 * @return a boolean value true or false
 	 */
-	public boolean isNeighbour(Vertex other) {
+	public boolean isNeighbour(Vertex1014682_1022927 other) {
 
 		float temp = point.calculateDistance(other.point);
 
@@ -122,7 +122,7 @@ public class Vertex {
 	 * 
 	 * @return a boolean value true or false
 	 */
-	public boolean isAlreadyANeighbour(Vertex other) {
+	public boolean isAlreadyANeighbour(Vertex1014682_1022927 other) {
 		return neighbours.contains(other);
 	}
 
@@ -132,7 +132,7 @@ public class Vertex {
 	 * 
 	 * @param node
 	 */
-	public void addNeighbour(Vertex node) {
+	public void addNeighbour(Vertex1014682_1022927 node) {
 		neighbours.add(node);
 	}
 
@@ -171,7 +171,7 @@ public class Vertex {
 	 * 
 	 * @param toBeDeleted The vertex that will be deleted
 	 */
-	public void deleteNeighbour(Vertex toBeDeleted) {
+	public void deleteNeighbour(Vertex1014682_1022927 toBeDeleted) {
 		this.neighbours.remove(toBeDeleted);
 
 	}
@@ -180,11 +180,11 @@ public class Vertex {
 	 * 
 	 * @return
 	 */
-	public Vertex getClosestNeighbour() {
+	public Vertex1014682_1022927 getClosestNeighbour() {
 
 		if (neighbours.size() > 0) {
 			float minDistance = calculateDistance(neighbours.get(0));
-			Vertex e = neighbours.get(0);
+			Vertex1014682_1022927 e = neighbours.get(0);
 
 			for (int i = 1; i < neighbours.size(); i++)
 				if (calculateDistance(neighbours.get(i)) < minDistance) {
@@ -204,11 +204,11 @@ public class Vertex {
 	 * 
 	 * @return the closest neighbour as an vertex
 	 */
-	public Vertex getClosestNeighbour(LinkedList<Vertex> visited) {
+	public Vertex1014682_1022927 getClosestNeighbour(LinkedList<Vertex1014682_1022927> visited) {
 
 		if (this.neighbours.size() > 0) {
 			float minDistance = Float.POSITIVE_INFINITY;
-			Vertex e = null;
+			Vertex1014682_1022927 e = null;
 
 			for (int i = 0; i < neighbours.size(); i++)
 				if (calculateDistance(neighbours.get(i)) < minDistance && !visited.contains(neighbours.get(i))) {
@@ -230,9 +230,9 @@ public class Vertex {
 	 * 
 	 * @return float value that indicates the distance
 	 */
-	public Float getClosestDistance(LinkedList<Vertex> visited) {
+	public Float getClosestDistance(LinkedList<Vertex1014682_1022927> visited) {
 
-		Vertex e = getClosestNeighbour(visited);
+		Vertex1014682_1022927 e = getClosestNeighbour(visited);
 
 		return calculateDistance(e);
 	}
@@ -272,7 +272,7 @@ public class Vertex {
 		if (getClass() != obj.getClass())
 			return false;
 
-		Vertex other = (Vertex) obj;
+		Vertex1014682_1022927 other = (Vertex1014682_1022927) obj;
 		if (ID == null) {
 			if (other.ID != null)
 				return false;

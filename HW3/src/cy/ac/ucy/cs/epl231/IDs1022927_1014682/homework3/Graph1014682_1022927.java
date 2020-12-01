@@ -11,9 +11,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Graph {
+public class Graph1014682_1022927 {
 
-	private LinkedList<Vertex> hashTable[]; // Table of linkedlists that indicates a hashtable
+	private LinkedList<Vertex1014682_1022927> hashTable[]; // Table of linkedlists that indicates a hashtable
 
 	private static int hashTableSize; // Indicates the hashtable size
 
@@ -23,7 +23,7 @@ public class Graph {
 	 * Constructor for the class Graph that sets the noOfVertices equal to 0, the
 	 * hashTableSize equal to 5 and initializes all the linkedlists of the hashtable
 	 */
-	public Graph() {
+	public Graph1014682_1022927() {
 
 		noOfVertices = 0;
 
@@ -41,7 +41,7 @@ public class Graph {
 	 *  
 	 * @param n
 	 */
-	public void findNeighbors(Vertex n) {
+	public void findNeighbors(Vertex1014682_1022927 n) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
 				if (n.isNeighbour(hashTable[i].get(j)) && !n.isAlreadyANeighbour(hashTable[i].get(j))) {
@@ -58,7 +58,7 @@ public class Graph {
 	 * 
 	 * @return The vertex that was found
 	 */
-	public Vertex findVertex(String ID) {
+	public Vertex1014682_1022927 findVertex(String ID) {
 		for (int i = 0; i < hashTableSize; i++) {
 			for (int j = 0; j < hashTable[i].size(); j++)
 				if (hashTable[i].get(j).getID().compareTo(ID) == 0) {
@@ -117,7 +117,7 @@ public class Graph {
 	 * 
 	 * @return
 	 */
-	public int calculateHashkey(Vertex newNode) {
+	public int calculateHashkey(Vertex1014682_1022927 newNode) {
 		int temp = Integer.parseInt(newNode.getID());
 
 		return temp % hashTableSize;
@@ -126,7 +126,7 @@ public class Graph {
 
 	private void rehashTable() {
 
-		LinkedList<Vertex> temp[] = hashTable;
+		LinkedList<Vertex1014682_1022927> temp[] = hashTable;
 		int previousSize = hashTableSize;
 
 		hashTableSize *= 10;
@@ -152,9 +152,9 @@ public class Graph {
 	 * 
 	 * @return The deleted vertex
 	 */
-	public Vertex deleteVertex(String ID) {
+	public Vertex1014682_1022927 deleteVertex(String ID) {
 
-		Vertex toBeRemoved = findVertex(ID);
+		Vertex1014682_1022927 toBeRemoved = findVertex(ID);
 
 		for (int i = 0; i < toBeRemoved.neighbours.size(); i++) {
 			toBeRemoved.neighbours.get(i).deleteNeighbour(toBeRemoved);
@@ -173,7 +173,7 @@ public class Graph {
 	 * 
 	 * @param newNode
 	 */
-	public void insertVertex(Vertex newNode) {
+	public void insertVertex(Vertex1014682_1022927 newNode) {
 
 		noOfVertices++;
 
@@ -198,18 +198,18 @@ public class Graph {
 	 * 
 	 * @return The minimum spanning tree that was created.
 	 */
-	public MST calculateMST(Vertex e) {
+	public MST1014682_1022927 calculateMST(Vertex1014682_1022927 e) {
 
-		Node root = new Node(e);
+		Node1014682_1022927 root = new Node1014682_1022927(e);
 
-		MST mst = new MST(root);
+		MST1014682_1022927 mst = new MST1014682_1022927(root);
 
-		LinkedList<Vertex> visited = new LinkedList<Vertex>();
+		LinkedList<Vertex1014682_1022927> visited = new LinkedList<Vertex1014682_1022927>();
 		visited.add(e);
 
 		while (mst.getTreeSize() < noOfVertices) {
 
-			LinkedList<Vertex> closest = new LinkedList<Vertex>();
+			LinkedList<Vertex1014682_1022927> closest = new LinkedList<Vertex1014682_1022927>();
 			LinkedList<Float> distance = new LinkedList<Float>();
 
 			for (int i = 0; i < visited.size(); i++)
@@ -230,7 +230,7 @@ public class Graph {
 					minDistance = distance.get(i);
 				}
 
-			Node newNode = new Node(closest.get(idxMinDistance));
+			Node1014682_1022927 newNode = new Node1014682_1022927(closest.get(idxMinDistance));
 
 			mst.insertNodeAsChild(visited.get(idxMinDistance), newNode);
 			visited.add(closest.get(idxMinDistance));

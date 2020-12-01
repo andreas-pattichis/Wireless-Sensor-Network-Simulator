@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Simulation {
+public class Simulation1014682_1022927 {
 
 	public static void main(String[] args) {
 
@@ -21,11 +21,11 @@ public class Simulation {
 		float d = Integer.parseInt(args[0]);
 		File file = new File(filename);
 
-		Graph g = new Graph();
+		Graph1014682_1022927 g = new Graph1014682_1022927();
 
 		try (Scanner sc = new Scanner(file)) {
 			while (sc.hasNextLine()) {
-				Vertex test = new Vertex(sc.nextLine(), d);
+				Vertex1014682_1022927 test = new Vertex1014682_1022927(sc.nextLine(), d);
 				g.insertVertex(test);
 				g.findNeighbors(test);
 			}
@@ -42,7 +42,7 @@ public class Simulation {
 
 		int choice = 0;
 
-		MST mst = null;
+		MST1014682_1022927 mst = null;
 
 		while (choice != 6) {
 			System.out.print("-------------------------------------------------------------+");
@@ -77,7 +77,7 @@ public class Simulation {
 				in.nextLine();
 				String newNode = in.nextLine();
 
-				Vertex test = new Vertex(newNode, d);
+				Vertex1014682_1022927 test = new Vertex1014682_1022927(newNode, d);
 				g.insertVertex(test);
 				g.findNeighbors(test);
 				mst = g.calculateMST(g.findVertex("02"));
@@ -94,7 +94,7 @@ public class Simulation {
 
 				System.out.print("Give the ID of the node you want to remove: \n\t> ");
 				String edgeID = in.next();
-				Vertex removed = g.deleteVertex(edgeID);
+				Vertex1014682_1022927 removed = g.deleteVertex(edgeID);
 				mst = g.calculateMST(g.findVertex("02"));
 				/* mst.removeEdge(new Node(new Edge(toBeRemoved, d))); */
 				System.out.println("\tNode " + removed + " was removed successfully!");
@@ -106,7 +106,7 @@ public class Simulation {
 					break;
 				}
 				
-				Vertex toBeInformed = null;
+				Vertex1014682_1022927 toBeInformed = null;
 				do {
 					
 				System.out.print("Give the ID of the fire station that you want to start: \n\t> ");
@@ -121,7 +121,7 @@ public class Simulation {
 				}
 				while(!toBeInformed.isControlCenter());
 				
-				MST temp = g.calculateMST(toBeInformed);
+				MST1014682_1022927 temp = g.calculateMST(toBeInformed);
 				System.out.println("\nThe highest temperature recorded was " + temp.informFireStation() + " °C.\n\n");
 				break;
 
