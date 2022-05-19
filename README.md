@@ -32,13 +32,13 @@ Reads the Node ID from the user, and calculates and prints the maximum temperatu
 **•	Example:**
 
 10 input.txt
-
-30	[7, 6]	40
-05	[2, 5]	45
-10	[2, 0]	65
-21	[7, 0]	33
-31	[0, 9]	34
-02	[0, 0]	50
+<br><br>
+30	[7, 6]	40<br>
+05	[2, 5]	45<br>
+10	[2, 0]	65<br>
+21	[7, 0]	33<br>
+31	[0, 9]	34<br>
+02	[0, 0]	50<br>
 
 
 **•	Example's output:**
