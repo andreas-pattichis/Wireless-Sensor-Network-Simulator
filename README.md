@@ -1,39 +1,37 @@
 # Wireless Sensor Network Simulator
-**•	Περιγραφή λύσης προβλήματος:**
-Στην συγκεκριμένη εργασία μας ζητήθηκε για την δημιουργία ενός προγράμματός το οποίο αντιπροσωπεύει προσομοίωση Ασύρματου Δικτύου Αισθητήρων (Wireless Sensor Network Simulator) για την ανταλλαγή και διαχείριση πληροφοριών μέσα σε ένα τέτοιο δίκτυο. Πιο συγκεκριμένα, μας ζητήθηκε να υλοποιήσουμε, σε ομάδες των δύο, έξι λειτουργείες της προσομοίωσης αυτής, όπου και εξηγούνται με λεπτομέρεια στην συνέχεια.
+**•	Solution of the problem, explained:**
+In this project, we were asked to present a simulation of a Wireless Sensor Network Simulator for the exchange and management of information within such a network. More specifically, we were asked to implement, in groups of two, six functions of this simulation, which are explained in detail below.
 
-**Αρχικά, όσο αφορά τις κλάσεις του προγράμματος, θεώρησα απαραίτητη την δημιουργία 11 κλάσεων:**
+**Initially, regarding the classes of the program, I considered it necessary to create 11 classes:**
 
-1.	Coordinates1014682_1022927: Κλάση η οποία αντιπροσωπεύει τις συντεταγμένες σε μορφή [x, y],  καθώς και περιέχει  μεθόδους με  όλες τις βασικές λειτουργίες τους.
-2.	Node1014682_1022927: Κλάση η οποία αντιπροσωπεύει ένα Node, η οποία κληρονομείται από την κλάση Vertex και αποθηκεύει όλα τα παιδία του Vertex, καθώς και περιέχει  μεθόδους με  όλες τις βασικές λειτουργίες τους.
-3.	Vertex1014682_1022927: κλάση η οποία αντιπροσωπεύει ένα Vertex και αποθηκεύει την ταυτότητα, τις συντεταγμένες, την θερμοκρασία του, μια λίστα με τους γείτονες του συγκεκριμένου Vertex καθώς και άλλες πληροφορίες του.
-4.	Graph1014682_1022927: κλάση η οποία υλοποιεί την μορφή ενός γράφου, καθώς και περιέχει  μεθόδους με  όλες τις βασικές λειτουργίες του.
-5.	MST1014682_1022927: κλάση η οποία υλοποιεί την μορφή ενός Minimum Spanning Tree, καθώς και περιέχει  μεθόδους με  όλες τις βασικές λειτουργίες του. 
-6.	Simulation1014682_1022927: λειτουργεί σαν simulation στο οποίο τρέχει όλο το πρόγραμμα
-
-
-**Όπως έχει ζητηθεί, το πρόγραμμα ζητά από τον χρήστη την τιμή του d και το όνομα ενός αρχείου το οποίο θα περιέχει στοιχεία κόμβων. Ταυτόχρονα δημιουργείται το graph και υπολογίζεται το hashtable.**
-
-**Ακολούθως, υλοποιούνται οι 6 λειτουργίες που ζητήθηκαν οι οποίες είναι:**
-1.	Calculate Minimum Spanning Tree:
-Καλεί την μέθοδο του Graph calculateMST(), η οποία παίρνει σαν παράμετρο το Vertex με το οποίο θα αρχίσει, και υλοποιεί το Minimum Spanning Tree το οποίο και επιστρέφει.
-2.	Print Minimum Spanning Tree:
-Καλεί την μέθοδο του MST display(), η οποία τυπώνει το Minimum Spanning Tree και τυπώνει το δέντρο ανά level.
-3.	Insert new node:
-Διαβάζει από τον χρήστη νέο Node που θα τοποθετηθεί στο MST, τοποθετείτε στο Graph και βρίσκονται οι γείτονες του, και ακολούθως υπολογίζεται το καινούργιο MST.
-4.	Delete node: 
-Διαβάζει από τον χρήστη Node που θα διαγραφεί από το MST, διαγράφεται από το Graph, και ακολούθως υπολογίζεται το καινούργιο MST.
-5.	Inform fire station A for the highest network temperature:
-Διαβάζει από τον χρήστη την ταυτότητα του Node, και υπολογίζει αλλά και τυπώνει την μέγιστη θερμοκρασία .
-6.	Exit the simulation:
+1. Coordinates1014682_1022927: A class that represents the coordinates in [x, y] format, and contains methods with all their basic functions.
+2. Node1014682_1022927: A class that represents a Node, which is inherited from the Vertex class and stores all Vertex children, and contains methods with all of their basic functions.
+3. Vertex1014682_1022927: a class that represents a Vertex and stores its identity, coordinates, temperature, a list of Vertex neighbors, and other information.
+4. Graph1014682_1022927: a class that implements the form of a graph, as well as contains methods with all its basic functions.
+5. MST1014682_1022927: class which implements the form of a Minimum Spanning Tree, as well as contains methods with all its basic functions.
+6. Simulation1014682_1022927: the simulation
 
 
+**As requested, the program asks the user for the value of d and the name of a file that will contain node elements. At the same time the graph is created and the hashtable is calculated.**
 
-**•	Τιμές παραδείγματος:**
+**The 6 requested functions are:**
+1. Calculate Minimum Spanning Tree:
+It calls the Graph calculateMST () method, which takes as a parameter the Vertex with which it will start, and implements the Minimum Spanning Tree which it returns.
+2. Print Minimum Spanning Tree:
+Calls the MST display method (), which prints the Minimum Spanning Tree and prints the tree per level.
+3. Insert new node:
+It reads from the user a new Node that will be placed in MST, you place it in Graph and its neighbors are located, and then the new MST is calculated.
+4. Delete node:
+It reads from the Node user to be deleted from the MST, is deleted from the Graph, and then the new MST is calculated.
+5. Inform fire station A for the highest network temperature:
+Reads the Node ID from the user, and calculates and prints the maximum temperature.
+6. Exit the simulation:
+
+
+
+**•	Example:**
 
 10 input.txt
-
-όπου input.txt περιέχει τα εξής στοιχεία:
 
 30	[7, 6]	40
 05	[2, 5]	45
@@ -43,7 +41,7 @@
 02	[0, 0]	50
 
 
-**•	Παράδειγμα εξόδου:**
+**•	Example's output:**
 
 <br />![image](https://user-images.githubusercontent.com/63289392/152787211-60fe81c0-7590-48d1-b4fd-2de9e684c5fb.png)
 
