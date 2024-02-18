@@ -1,5 +1,5 @@
 # Wireless Sensor Network Simulator
-
+---
 ## Project Overview
 This project simulates a Wireless Sensor Network (WSN) for the efficient exchange and management of information. Developed as a group project, it focuses on implementing six key functions that facilitate the simulation of various operations within a WSN environment. 
 ---
